@@ -5,6 +5,8 @@ if($opt) {
 	//댓글일 때 설정값 변경
 	$board['bo_use_good'] = $boset['na_cgood'];
 	$board['bo_use_nogood'] = $boset['na_cnogood'];
+
+	run_event('comment_good_before', $bo_table, $wr_id, $good);
 } else {
 	run_event('bbs_good_before', $bo_table, $wr_id, $good);
 
@@ -126,8 +128,9 @@ if ($good == 'good' || $good == 'nogood') {
 		else
 			$status = '비추천';
 
-		//댓글은 실행안함
-		if(!$opt) {		
+		if($opt) {
+			run_event('comment_increase_good_json', $bo_table, $wr_id, $good);
+		} else {
 			run_event('bbs_increase_good_json', $bo_table, $wr_id, $good);
 		}
 
@@ -136,7 +139,9 @@ if ($good == 'good' || $good == 'nogood') {
 }
 
 //댓글은 실행안함
-if(!$opt) {
+if($opt) {
+	run_event('comment_good_after', $bo_table, $wr_id, $good);
+} else {
 	run_event('bbs_good_after', $bo_table, $wr_id, $good);
 
 	@include_once($board_skin_path.'/good.tail.skin.php');

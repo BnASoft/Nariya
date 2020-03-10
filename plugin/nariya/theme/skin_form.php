@@ -40,6 +40,10 @@ if($skin == 'board' && $board['bo_table']) { //게시판
 	$skin_path = get_skin_path('qa', (G5_IS_MOBILE ? $qaconfig['qa_mobile_skin'] : $qaconfig['qa_skin']));
 	$skin_url = get_skin_url('qa', (G5_IS_MOBILE ? $qaconfig['qa_mobile_skin'] : $qaconfig['qa_skin']));
 	$title = '1:1문의 스킨설정';
+} else if($skin == 'noti') { //알림
+	$skin_path = NA_PLUGIN_PATH.'/skin/noti/'.$nariya['noti'];
+	$skin_url = NA_PLUGIN_URL.'/skin/noti/'.$nariya['noti'];
+	$title = '알림 스킨설정';
 } else if($skin == 'shingo') { //신고모음
 	$skin_path = NA_PLUGIN_PATH.'/skin/shingo/'.$nariya['shingo_skin'];
 	$skin_url = NA_PLUGIN_URL.'/skin/shingo/'.$nariya['shingo_skin'];

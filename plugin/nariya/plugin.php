@@ -1,8 +1,9 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
-// 캐시 테이블
+// DB 테이블
 $g5['na_cache'] = G5_TABLE_PREFIX.'na_cache';
+$g5['na_noti'] = G5_TABLE_PREFIX.'na_noti';
 
 // YC
 if(!defined('IS_YC')) {
@@ -37,6 +38,9 @@ include_once(NA_PLUGIN_PATH.'/lib/common.lib.php');
 // 기본 설정
 $nariya = array();
 $nariya = na_config('nariya');
+
+// 알림
+define('IS_NA_NOTI', $nariya['noti']);
 
 // 게시판 플러그인
 define('IS_NA_BBS', $nariya['bbs']);

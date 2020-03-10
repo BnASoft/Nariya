@@ -12,42 +12,45 @@ $session_id = session_id();
 add_stylesheet('<link rel="stylesheet" href="'.get_social_skin_url().'/style.css">', 10);
 ?>
 
-<li>
-    <label class="frm_label">SNS 로그인 관리</label>
-    <div class="reg-form sns-wrap-reg">
-        <div class="sns-wrap">
+<div class="form-group">
+	<label class="col-sm-2 control-label">SNS 로그인 관리</label>
+	<div class="col-sm-10">
+		<div class="reg-form sns-wrap-reg">
+			<div class="sns-wrap" style="text-align:left;">
 
-        <?php foreach( $socials as $social=>$provider_name ){
-            
-            if( !option_array_checked($social, $config['cf_social_servicelist'])) {
-                continue;
-            }
+			<?php foreach( $socials as $social=>$provider_name ){
+				
+				if( !option_array_checked($social, $config['cf_social_servicelist'])) {
+					continue;
+				}
 
-            $social_nonce = social_nonce_create($social, $session_id);
-            $add_class='';
-            $title='';
-            if( in_array($social, $my_provides) ){
-                
-                $link_href = G5_SOCIAL_LOGIN_URL.'/unlink.php?provider='.$social.'&amp;social_nonce='.$social_nonce;
+				$social_nonce = social_nonce_create($social, $session_id);
+				$add_class='';
+				$title='';
+				if( in_array($social, $my_provides) ){
+					
+					$link_href = G5_SOCIAL_LOGIN_URL.'/unlink.php?provider='.$social.'&amp;social_nonce='.$social_nonce;
 
-                $title = $provider_name.' 연결을 해제합니다.';
-            } else {
-                $add_class = ' sns-icon-not';
+					$title = $provider_name.' 연결을 해제합니다.';
+				} else {
+					$add_class = ' sns-icon-not';
 
-                $link_href = $self_url.'?provider='.$social.'&amp;mylink=1&amp;url='.$urlencode;
+					$link_href = $self_url.'?provider='.$social.'&amp;mylink=1&amp;url='.$urlencode;
 
-                $title = $provider_name.' 계정을 연결 합니다.';
+					$title = $provider_name.' 계정을 연결 합니다.';
 
-            }
-        ?>
+				}
+			?>
 
-        <a href="<?php echo $link_href; ?>" id="sns-<?php echo $social; ?>" class="sns-icon social_link sns-<?php echo $social; ?><?php echo $add_class; ?>" title="<?php echo $title; ?>" data-provider="<?php echo $social; ?>" ><span class="ico"></span><span class="txt"><?php echo $provider_name; ?> 로그인</span></a>
+			<a href="<?php echo $link_href; ?>" id="sns-<?php echo $social; ?>" class="sns-icon social_link sns-<?php echo $social; ?><?php echo $add_class; ?>" title="<?php echo $title; ?>" data-provider="<?php echo $social; ?>" ><span class="ico"></span><span class="txt"><?php echo $provider_name; ?> 로그인</span></a>
 
-        <?php }     //end foreach ?>
+			<?php }     //end foreach ?>
 
-        </div>
-    </div>
-</li>
+			</div>
+		</div>
+
+	</div>
+</div>
 
 <script>
 

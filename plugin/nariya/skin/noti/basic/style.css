@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+/* 탭 */
+.noti-mo { display:none; }
+#bo_cate li {width:16.666%; }
+@media (max-width:991px) { 
+	.responsive #bo_cate li {width:20%; }
+}
+@media (max-width:767px) { 
+	.responsive #bo_cate li { width:25%; }
+	.responsive .noti-mo { display:inline-block; }
+}
+@media (max-width:480px) { 
+	.responsive #bo_cate li { width:33.33%; }
+}
+
+/* 버튼 */
+#bo_btn_top {
+	margin:6px 0 4px;
+}
+#bo_btn_top:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+.bo_fx {
+	margin-bottom:5px;
+	float:right;
+	zoom:1;
+}
+.bo_fx:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+.bo_fx ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#bo_list_total {
+	padding:8px 0 4px;
+}
+
+/* 버튼 : 공통 */
+.btn_bo_user {
+	float:right;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.btn_bo_user li {
+	float:left;
+	text-align:center;
+	background:#fff;
+}
+.btn_bo_user > li {
+	position:relative;
+}
+.btn_bo_adm {
+	float:left;
+}
+.btn_bo_adm li {
+	float:left;
+}
+.btn_bo_adm input {
+	padding:0 8px;
+	border:0;
+	background:#d4d4d4;
+	color:#666;
+	text-decoration:none;
+	vertical-align:middle;
+}
+
+/* 버튼 : 관리자, 수정 등 더보기 */
+.more_opt {
+	display:none;
+	position:absolute;
+	top:45px;
+	right:0;
+	background:#fff;
+	border:1px solid #b8bfc4;
+	z-index:900;
+}
+.more_opt:before {
+	content:"";
+	position:absolute;
+	top:-8px;
+	right:13px;
+	width:0;
+	height:0;
+	border-style:solid;
+	border-width:0 6px 8px 6px;
+	border-color:transparent transparent #b8bfc4 transparent;
+}
+.more_opt:after {
+	content:"";
+	position:absolute;
+	top:-6px;
+	right:13px;
+	width:0;
+	height:0;
+	border-style:solid;
+	border-width:0 6px 8px 6px;
+	border-color:transparent transparent #fff transparent;
+}
+.more_opt li {
+	border-bottom:1px solid #f1f1f1;
+	padding:10px 0;
+	float:inherit;
+	width:100px;
+	margin:0;
+	color:#6b757c;
+	text-align:center;
+}
+.more_opt li:last-child {
+	border-bottom:0;
+}
+.more_opt li a,
+.more_opt li button {
+	width:100%;
+	border:0;
+	background:#fff;
+	color:#6b757c;
+}
+.more_opt li:hover a,
+.more_opt li:hover button {
+	color:#000;
+}
+
+/* 목록 */
+#noti_list { }
+#noti_list .chk { 
+	width:40px;
+	text-align:center;
+}
+#noti_list .chk input { 
+	margin:0 !important;
+}
+#noti_list .date { 
+	width:110px; 
+	text-align:center;
+}
+#noti_list .state { 
+	width:80px; 
+	text-align:center;
+}
+
+#noti_list > ul { 
+	list-style:none; 
+	padding:0; 
+	margin:0; 
+}
+#noti_list .tr { 
+	border-bottom:1px solid #e8e5e9; 
+}
+#noti_list .tr:hover { 
+	color:#000; 
+	background-color:#fafafa; 
+}
+#noti_list .td { 
+	padding:8px 10px; 
+	color:#666; 
+}
+#noti_list .none { 
+	padding:50px 0; 
+	text-align:center; 
+	color:#888;
+}

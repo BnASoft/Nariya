@@ -75,6 +75,25 @@ function na_tab_options($value) {
 	return na_options($opt, $value);
 }
 
+function na_tab_colors($value) {
+
+	$opt = array();
+	$opt[] = array('red', 'Red');
+	$opt[] = array('crimson', 'Crimson');
+	$opt[] = array('orangered', 'OrangeRed');
+	$opt[] = array('orange', 'Orange');
+	$opt[] = array('green', 'green');
+	$opt[] = array('skyblue', 'Skyblue');
+	$opt[] = array('deepblue', 'DeepBlue');
+	$opt[] = array('blue', 'Blue');
+	$opt[] = array('navy', 'Navy');
+	$opt[] = array('violet', 'Violet');
+	$opt[] = array('yellow', 'Yellow');
+	$opt[] = array('black', 'Black');
+
+	return na_options($opt, $value);
+}
+
 function na_shadow_options($value) {
 
 	$opt = array();

@@ -19,6 +19,19 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			</div>
 		</div>
 	</li>
+	<?php if(IS_NA_NOTI) { ?>
+		<li class="list-group-item">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">새글 알림</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="boset[noti_mb]" value="<?php echo $boset['noti_mb'] ?>">
+					<p class="help-block">
+						새글알림을 받을 회원아이디를 콤마(,)로 구분하여 복수 회원 등록 가능
+					</p>
+				</div>
+			</div>
+		</li>
+	<?php } ?>
 	<li class="list-group-item">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">자동출력</label>
@@ -36,7 +49,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						첨부 동영상
 					</th>
 					<td class="text-center">
-						<input type="checkbox" name="boset[na_video_attach]" value="1"<?php echo get_checked('1', $boset['na_video_attach'])?> class="no-margin">
+						<input type="checkbox" name="boset[na_video_attach]" value="1"<?php echo get_checked('1', $boset['na_video_attach'])?> class="chk-margin">
 					</td>
 					<td class="text-muted">
 						동일 파일명의 이미지 첨부시 표지이미지 자동적용
@@ -47,7 +60,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						관련링크 동영상
 					</th>
 					<td class="text-center">
-						<input type="checkbox" name="boset[na_video_link]" value="1"<?php echo get_checked('1', $boset['na_video_link'])?> class="no-margin">
+						<input type="checkbox" name="boset[na_video_link]" value="1"<?php echo get_checked('1', $boset['na_video_link'])?> class="chk-margin">
 					</td>
 					<td class="text-muted">
 						관련링크에 등록된 유튜브, 비메오 등 공유주소
@@ -58,7 +71,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						동영상 자동실행
 					</th>
 					<td class="text-center">
-						<input type="checkbox" name="boset[na_autoplay]" value="1"<?php echo get_checked('1', $boset['na_autoplay'])?> class="no-margin">
+						<input type="checkbox" name="boset[na_autoplay]" value="1"<?php echo get_checked('1', $boset['na_autoplay'])?> class="chk-margin">
 					</td>
 					<td class="text-muted">
 						복수 출력시 문제되며, 유튜브의 경우 사이트 블럭 조치를 받을 수 있음
@@ -80,7 +93,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						외부 이미지
 					</th>
 					<td class="text-center">
-						<input type="checkbox" name="boset[na_save_image]" value="1"<?php echo get_checked('1', $boset['na_save_image'])?> class="no-margin">
+						<input type="checkbox" name="boset[na_save_image]" value="1"<?php echo get_checked('1', $boset['na_save_image'])?> class="chk-margin">
 					</td>
 					<td class="text-muted">
 						외부 이미지를 자동으로 서버에 저장
@@ -126,10 +139,10 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<input type="text" class="form-control" name="boset[na_lucky_dice]" value="<?php echo $boset['na_lucky_dice'] ?>">
 					</td>
 					<td class="text-center">
-						<input type="checkbox" name="boset[na_cgood]" value="1"<?php echo get_checked('1', $boset['na_cgood'])?> class="no-margin">
+						<input type="checkbox" name="boset[na_cgood]" value="1"<?php echo get_checked('1', $boset['na_cgood'])?> class="chk-margin">
 					</td>
 					<td class="text-center">
-						<input type="checkbox" name="boset[na_cnogood]" value="1"<?php echo get_checked('1', $boset['na_cnogood'])?> class="no-margin">
+						<input type="checkbox" name="boset[na_cnogood]" value="1"<?php echo get_checked('1', $boset['na_cnogood'])?> class="chk-margin">
 					</td>
 					</tr>
 					</tbody>
@@ -197,7 +210,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 							</div>
 						</td>
 						<td class="text-center">
-							<input type="checkbox" name="boset[na_tag]" value="1"<?php echo get_checked('1', $boset['na_tag'])?> class="no-margin">
+							<input type="checkbox" name="boset[na_tag]" value="1"<?php echo get_checked('1', $boset['na_tag'])?> class="chk-margin">
 						</td>
 						<td class="text-muted">
 							신고 횟수 이상일 때 잠금처리(비밀글)

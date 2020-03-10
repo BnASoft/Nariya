@@ -24,8 +24,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 				<?php echo str_replace('sv_member', 'sv_member en', $member['sideview']); ?>
 			</div>
 			<div class="f-small">
-				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
-					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a>
+				<?php if(IS_NA_NOTI) { // 알림 ?>
+					<a href="<?php echo G5_BBS_URL ?>/noti.php">
+						알림<?php if ($member['as_noti']) { ?> <b class="orangered"><?php echo number_format($member['as_noti']) ?></b><?php } ?>
+					</a>
 					<span class="light f-tiny">|</span>
 				<?php } ?>
 				<a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="win_memo">
@@ -33,7 +35,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 				</a>
 				<span class="light f-tiny">|</span>
 				<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="win_scrap">
-					스크랩<?php if($member['mb_scrap_cnt']) { ?> <b><?php echo number_format($member['mb_scrap_cnt']) ?></b><?php } ?>
+					스크랩
 				</a>
 			</div>
 			<div class="clearfix"></div>
@@ -60,12 +62,20 @@ add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 		<?php } ?>
 
 		<div class="login-line f-small">
-			<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="win_point pull-left">
-				포인트 <b class="red"><?php echo number_format($member['mb_point']);?></b>
-			</a>
-			<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php" class="pull-right">
-				정보수정
-			</a>
+			<?php if($config['cf_use_point']) { ?>
+				<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="win_point pull-left">
+					포인트 <b class="red"><?php echo number_format($member['mb_point']);?></b>
+				</a>
+			<?php } ?>
+			<span class="pull-right">
+				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
+					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a>
+					<span class="light f-tiny">|</span>
+				<?php } ?>
+				<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php">
+					정보수정
+				</a>
+			</span>
 			<div class="clearfix"></div>
 		</div>
 

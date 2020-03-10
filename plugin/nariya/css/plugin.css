@@ -1002,3 +1002,511 @@ i.bg-na-navy,
 	background-color: rgb(50, 60, 70); 
 	color: #fff; 
 }
+
+/* Tabs */
+.tabs li a { 
+	cursor:pointer !important; 
+}
+.div-tab.tabs, 
+.div-tab-top.tabs, 
+.div-tab-bottom.tabs, 
+.div-tab-btn.tabs { 
+	margin-bottom: 0; 
+}
+.div-tab.tabs::before, 
+.div-tab-top.tabs::before, 
+.div-tab-bottom.tabs::before, 
+.div-tab-btn.tabs::before { 
+	display: table; content: " "; 
+}
+.div-tab.tabs::after, 
+.div-tab-top.tabs::after, 
+.div-tab-bottom.tabs::after, 
+.div-tab-btn.tabs::after { 
+	display: table; content: " "; 
+}
+.div-tab.tabs::after, 
+.div-tab-top.tabs::after, 
+.div-tab-bottom.tabs::after, 
+.div-tab-btn.tabs::after { 
+	clear: both; 
+}
+.div-tab.tabs ul.nav-tabs, 
+.div-tab-top.tabs ul.nav-tabs, 
+.div-tab-bottom.tabs ul.nav-tabs { 
+	margin: 0;
+}
+.div-tab.tabs div.tab-content { 
+	border-width: 0px 1px 1px; 
+	border-style: solid; 
+	border-color: rgb(221, 221, 221); 
+	padding: 15px; 
+}
+.div-tab-top.tabs div.tab-content, 
+.div-tab-bottom.tabs div.tab-content { 
+	border: 0; 
+	padding: 15px 0; 
+}
+.div-tab.tabs div.tab-content, 
+.div-tab-top.tabs div.tab-content, 
+.div-tab-bottom.tabs div.tab-content { 
+	border-radius: 0; 
+	border-image: none; 
+	box-shadow: none; 
+	background-color: #fff; 
+	-webkit-box-shadow: 0; 
+	-moz-box-shadow: none; 
+	-moz-border-radius: none; 
+	-webkit-border-radius: 0; 
+}
+.div-tab.tabs ul.nav-tabs li { 
+	background: rgb(247, 247, 247); 
+	border-image: none; 
+	color: #333; 
+	margin-right: 0; 
+	border: 0; 
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	border-top: 1px solid rgb(221, 221, 221);
+	border-left: 1px solid rgb(230, 230, 230); 
+	border-image: none;
+	line-height:14px !important;
+}
+.div-tab.tabs ul.nav-tabs li:hover, 
+.div-tab.tabs ul.nav-tabs li:focus { 
+	border:0;
+	border-top: 1px solid rgb(221, 221, 221);
+	border-left: 1px solid rgb(230, 230, 230); 
+	border-image: none;
+}
+.div-tab.tabs ul.nav-tabs li:first-child  {
+	border-left:1px solid rgb(221, 221, 221); 
+	margin-left:0px;	
+}
+.div-tab.tabs ul.nav-tabs li:last-child, 
+.div-tab.tabs ul.nav-tabs li:last-child:hover {
+	border-right:1px solid rgb(221, 221, 221); 
+}
+.div-tab.tabs ul.nav-tabs li.active { 
+	background: #fff; 
+	border-top:1px solid #333; 
+}
+.div-tab.tabs ul.nav-tabs li a, 
+.div-tab.tabs ul.nav-tabs li a:hover, 
+.div-tab.tabs ul.nav-tabs li a:focus,
+.div-tab.tabs ul.nav-tabs li:first-child a, 
+.div-tab.tabs ul.nav-tabs li:first-child a:hover, 
+.div-tab.tabs ul.nav-tabs li:first-child a:focus,
+.div-tab.tabs ul.nav-tabs li:last-child a, 
+.div-tab.tabs ul.nav-tabs li:last-child a:hover, 
+.div-tab.tabs ul.nav-tabs li:last-child a:focus { 
+	color:#333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-top: 1px solid transparent; 
+	border-bottom:1px solid rgb(221, 221, 221);
+	margin:0;
+	line-height:14px !important;
+}
+.div-tab.tabs ul.nav-tabs li.active a, 
+.div-tab.tabs ul.nav-tabs li.active a:hover, 
+.div-tab.tabs ul.nav-tabs li.active a:focus,
+.div-tab.tabs ul.nav-tabs li.active:first-child a, 
+.div-tab.tabs ul.nav-tabs li.active:first-child a:hover, 
+.div-tab.tabs ul.nav-tabs li.active:first-child a:focus,
+.div-tab.tabs ul.nav-tabs li.active:last-child a, 
+.div-tab.tabs ul.nav-tabs li.active:last-child a:hover, 
+.div-tab.tabs ul.nav-tabs li.active:last-child a:focus { 
+	color: #333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-top:1px solid #333; 
+	border-bottom:1px solid transparent;
+	margin:0;
+	line-height:14px !important;
+}
+.div-tab-top.tabs ul.nav-tabs, 
+.div-tab-bottom.tabs ul.nav-tabs { 
+	background: none; 
+	border-image: none; 
+	color: #333; 
+	margin: 0; 
+	border: 0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	border-image: none;
+	line-height:18px;
+	border-top:1px solid rgb(221, 221, 221); 
+	border-bottom:1px solid rgb(221, 221, 221); 
+}
+.div-tab-top.tabs ul.nav-tabs li, 
+.div-tab-bottom.tabs ul.nav-tabs li  {
+	border:0;
+	margin:0;
+	line-height:14px !important;
+}
+.div-tab-top.tabs ul.nav-tabs li a, 
+.div-tab-top.tabs ul.nav-tabs li a:hover, 
+.div-tab-top.tabs ul.nav-tabs li a:focus,
+.div-tab-top.tabs ul.nav-tabs li:first-child a, 
+.div-tab-top.tabs ul.nav-tabs li:first-child a:hover, 
+.div-tab-top.tabs ul.nav-tabs li:first-child a:focus,
+.div-tab-top.tabs ul.nav-tabs li:last-child a, 
+.div-tab-top.tabs ul.nav-tabs li:last-child a:hover, 
+.div-tab-top.tabs ul.nav-tabs li:last-child a:focus { 
+	color:#333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-top:2px solid transparent; 
+	border-bottom:0;
+	padding:12px 12px 10px;
+	margin-top:-1px;
+	line-height:14px !important;
+}
+.div-tab-top.tabs ul.nav-tabs li.active a, 
+.div-tab-top.tabs ul.nav-tabs li.active a:hover, 
+.div-tab-top.tabs ul.nav-tabs li.active a:focus,
+.div-tab-top.tabs ul.nav-tabs li.active:first-child a, 
+.div-tab-top.tabs ul.nav-tabs li.active:first-child a:hover, 
+.div-tab-top.tabs ul.nav-tabs li.active:first-child a:focus,
+.div-tab-top.tabs ul.nav-tabs li.active:last-child a, 
+.div-tab-top.tabs ul.nav-tabs li.active:last-child a:hover, 
+.div-tab-top.tabs ul.nav-tabs li.active:last-child a:focus { 
+	color: #333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-top:2px solid #333; 
+	border-bottom:0;
+	padding:12px 12px 10px;
+	line-height:14px !important;
+}
+
+.div-tab-bottom.tabs ul.nav-tabs li a, 
+.div-tab-bottom.tabs ul.nav-tabs li a:hover, 
+.div-tab-bottom.tabs ul.nav-tabs li a:focus,
+.div-tab-bottom.tabs ul.nav-tabs li:first-child a, 
+.div-tab-bottom.tabs ul.nav-tabs li:first-child a:hover, 
+.div-tab-bottom.tabs ul.nav-tabs li:first-child a:focus,
+.div-tab-bottom.tabs ul.nav-tabs li:last-child a, 
+.div-tab-bottom.tabs ul.nav-tabs li:last-child a:hover, 
+.div-tab-bottom.tabs ul.nav-tabs li:last-child a:focus { 
+	color:#333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-bottom:2px solid transparent; 
+	border-top:0;
+	padding:12px 12px 10px;
+	margin-bottom:-1px;
+	line-height:14px !important;
+}
+
+.div-tab-bottom.tabs ul.nav-tabs li.active a, 
+.div-tab-bottom.tabs ul.nav-tabs li.active a:hover, 
+.div-tab-bottom.tabs ul.nav-tabs li.active a:focus,
+.div-tab-bottom.tabs ul.nav-tabs li.active:first-child a, 
+.div-tab-bottom.tabs ul.nav-tabs li.active:first-child a:hover, 
+.div-tab-bottom.tabs ul.nav-tabs li.active:first-child a:focus,
+.div-tab-bottom.tabs ul.nav-tabs li.active:last-child a, 
+.div-tab-bottom.tabs ul.nav-tabs li.active:last-child a:hover, 
+.div-tab-bottom.tabs ul.nav-tabs li.active:last-child a:focus { 
+	color:#333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-bottom:2px solid #333; 
+	border-top:0;
+	padding:12px 12px 10px;
+	line-height:14px !important;
+}
+
+.div-tab-line.tabs ul.nav-tabs li a, 
+.div-tab-line.tabs ul.nav-tabs li a:hover, 
+.div-tab-line.tabs ul.nav-tabs li a:focus,
+.div-tab-line.tabs ul.nav-tabs li:first-child a, 
+.div-tab-line.tabs ul.nav-tabs li:first-child a:hover, 
+.div-tab-line.tabs ul.nav-tabs li:first-child a:focus,
+.div-tab-line.tabs ul.nav-tabs li:last-child a, 
+.div-tab-line.tabs ul.nav-tabs li:last-child a:hover, 
+.div-tab-line.tabs ul.nav-tabs li:last-child a:focus { 
+	color:#333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-top:2px solid transparent; 
+	border-bottom:2px solid transparent; 
+	border-top:0;
+	padding:12px 12px 10px;
+	margin:-1px 0px;
+	line-height:14px !important;
+}
+
+.div-tab-line.tabs ul.nav-tabs li.active a, 
+.div-tab-line.tabs ul.nav-tabs li.active a:hover, 
+.div-tab-line.tabs ul.nav-tabs li.active a:focus,
+.div-tab-line.tabs ul.nav-tabs li.active:first-child a, 
+.div-tab-line.tabs ul.nav-tabs li.active:first-child a:hover, 
+.div-tab-line.tabs ul.nav-tabs li.active:first-child a:focus,
+.div-tab-line.tabs ul.nav-tabs li.active:last-child a, 
+.div-tab-line.tabs ul.nav-tabs li.active:last-child a:hover, 
+.div-tab-line.tabs ul.nav-tabs li.active:last-child a:focus { 
+	color:#333;
+	border:0;
+	border-radius: 0; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	background:none;
+	border-top:2px solid #333; 
+	border-bottom:2px solid #333; 
+	padding:12px 12px 10px;
+	line-height:14px !important;
+}
+
+.div-tab-box.tabs ul.nav-tabs { 
+	margin: 0px; 
+	padding:0px; 
+	border:0px; 
+	border-left:1px solid #ddd; 
+}
+.div-tab-box.tabs ul.nav-tabs li a { 
+	padding:10px 15px; 
+	background: rgb(247, 247, 247); 
+	color: #333; 
+	margin-right: 0px; 
+	border-radius: 0px; 
+	-moz-border-radius: 0; 
+	-webkit-border-radius: 0; 
+	border:1px solid #ddd; 
+}
+.div-tab-box.tabs ul.nav-tabs li.active a { 
+	background: #333; 
+	color: #fff; 
+	font-weight:bold; 
+	border:1px solid #333; 
+	cursor:pointer; 
+}
+.div-tab-box.tabs ul.nav-tabs li a { 
+	border-left:0px !important; 
+}
+
+.div-tab-btn.tabs {
+	border:0px;
+	padding:0px;
+}
+
+.div-tab-btn.tabs ul.nav-tabs {
+	border:0px;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	padding:5px 0px;
+}
+.div-tab-btn.tabs ul.nav-tabs li {
+	border:0px;
+	margin:5px 0px;
+	padding:0;
+}
+.div-tab-btn.tabs ul.nav-tabs li a {
+    padding: 7px 15px !important;
+	background:none;
+	border:0px !important;
+	margin:0px;
+	font-weight:normal;
+}
+.div-tab-btn.tabs ul.nav-tabs li.active a { 
+	border:0px;
+	color:#fff;
+	font-weight:normal;
+	background: #333; 
+	cursor:pointer; 
+}
+
+/* Tab Colors - Top */
+.tabs-crimson-top.tabs ul.nav-tabs li.active, 
+.tabs-crimson-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(220, 20, 60) !important; 
+}
+.tabs-red-top.tabs ul.nav-tabs li.active, 
+.tabs-red-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(233, 27, 35) !important; 
+}
+.tabs-orangered-top.tabs ul.nav-tabs li.active, 
+.tabs-orangered-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: orangered !important; 
+}
+.tabs-orange-top.tabs ul.nav-tabs li.active, 
+.tabs-orange-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(240, 150, 20) !important; 
+}
+.tabs-green-top.tabs ul.nav-tabs li.active, 
+.tabs-green-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(140, 195, 70) !important; 
+}
+.tabs-deepblue-top.tabs ul.nav-tabs li.active, 
+.tabs-deepblue-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(0, 125, 180) !important; 
+}
+.tabs-skyblue-top.tabs ul.nav-tabs li.active, 
+.tabs-skyblue-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(100, 195, 245) !important; 
+}
+.tabs-blue-top.tabs ul.nav-tabs li.active, 
+.tabs-blue-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(52, 152, 219) !important; 
+}
+.tabs-navy-top.tabs ul.nav-tabs li.active, 
+.tabs-navy-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(50, 60, 70) !important; 
+}
+.tabs-violet-top.tabs ul.nav-tabs li.active, 
+.tabs-violet-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(85, 60, 125) !important; 
+}
+.tabs-yellow-top.tabs ul.nav-tabs li.active, 
+.tabs-yellow-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: rgb(241, 196, 15) !important; 
+}
+.tabs-black-top.tabs ul.nav-tabs li.active, 
+.tabs-black-top.tabs ul.nav-tabs li.active a { 
+	border-top-color: #333 !important; 
+}
+
+/* Tab Colors - Bottom */
+.tabs-crimson-bottom.tabs ul.nav-tabs li.active, 
+.tabs-crimson-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(220, 20, 60) !important; 
+}
+.tabs-red-bottom.tabs ul.nav-tabs li.active, 
+.tabs-red-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(233, 27, 35) !important; 
+}
+.tabs-orangered-bottom.tabs ul.nav-tabs li.active, 
+.tabs-orangered-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: orangered !important; 
+}
+.tabs-orange-bottom.tabs ul.nav-tabs li.active, 
+.tabs-orange-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(240, 150, 20) !important; 
+}
+.tabs-green-bottom.tabs ul.nav-tabs li.active, 
+.tabs-green-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(140, 195, 70) !important; 
+}
+.tabs-deepblue-bottom.tabs ul.nav-tabs li.active, 
+.tabs-deepblue-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(0, 125, 180) !important; 
+}
+.tabs-skyblue-bottom.tabs ul.nav-tabs li.active, 
+.tabs-skyblue-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(100, 195, 245) !important; 
+}
+.tabs-blue-bottom.tabs ul.nav-tabs li.active, 
+.tabs-blue-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(52, 152, 219) !important; 
+}
+.tabs-navy-bottom.tabs ul.nav-tabs li.active, 
+.tabs-navy-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(50, 60, 70) !important; 
+}
+.tabs-violet-bottom.tabs ul.nav-tabs li.active, 
+.tabs-violet-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(85, 60, 125) !important; 
+}
+.tabs-yellow-bottom.tabs ul.nav-tabs li.active, 
+.tabs-yellow-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: rgb(241, 196, 15) !important; 
+}
+.tabs-black-bottom.tabs ul.nav-tabs li.active, 
+.tabs-black-bottom.tabs ul.nav-tabs li.active a { 
+	border-bottom-color: #333 !important; 
+}
+
+/* Tab Colors - Bg */
+.tabs-crimson-bg.tabs ul.nav-tabs li.active, 
+.tabs-crimson-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(220, 20, 60) !important; 
+	background: rgb(220, 20, 60) !important; 
+}
+.tabs-red-bg.tabs ul.nav-tabs li.active, 
+.tabs-red-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(233, 27, 35) !important; 
+	background: rgb(233, 27, 35) !important; 
+}
+.tabs-orangered-bg.tabs ul.nav-tabs li.active, 
+.tabs-orangered-bg.tabs ul.nav-tabs li.active a { 
+	border-color: orangered !important; 
+	background: orangered !important; 
+}
+.tabs-orange-bg.tabs ul.nav-tabs li.active, 
+.tabs-orange-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(240, 150, 20) !important; 
+	background: rgb(240, 150, 20) !important; 
+}
+.tabs-green-bg.tabs ul.nav-tabs li.active, 
+.tabs-green-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(140, 195, 70) !important; 
+	background: rgb(140, 195, 70) !important; 
+}
+.tabs-deepblue-bg.tabs ul.nav-tabs li.active, 
+.tabs-deepblue-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(0, 125, 180) !important; 
+	background: rgb(0, 125, 180) !important; 
+}
+.tabs-skyblue-bg.tabs ul.nav-tabs li.active, 
+.tabs-skyblue-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(100, 195, 245) !important; 
+	background: rgb(100, 195, 245) !important; 
+}
+.tabs-blue-bg.tabs ul.nav-tabs li.active, 
+.tabs-blue-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(52, 152, 219) !important; 
+	background: rgb(52, 152, 219) !important; 
+}
+.tabs-navy-bg.tabs ul.nav-tabs li.active, 
+.tabs-navy-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(50, 60, 70) !important; 
+	background: rgb(50, 60, 70) !important; 
+}
+.tabs-violet-bg.tabs ul.nav-tabs li.active, 
+.tabs-violet-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(85, 60, 125) !important; 
+	background: rgb(85, 60, 125) !important; 
+}
+.tabs-yellow-bg.tabs ul.nav-tabs li.active, 
+.tabs-yellow-bg.tabs ul.nav-tabs li.active a { 
+	border-color: rgb(241, 196, 15) !important; 
+	background: rgb(241, 196, 15) !important; 
+}
+.tabs-black-bg.tabs ul.nav-tabs li.active, 
+.tabs-black-bg.tabs ul.nav-tabs li.active a { 
+	border-color: #333 !important; 
+	background: #333 !important; 
+}
+
+/* Tab Colors - Trans */
+.div-tab.tabs.trans-top ul.nav-tabs li.active { 
+	border-top-color: rgb(221, 221, 221) !important; 
+}
+.div-tab.tabs.trans-top ul.nav-tabs li.active a { 
+	color: crimson !important;
+	border-top-color: transparent !important; 
+}

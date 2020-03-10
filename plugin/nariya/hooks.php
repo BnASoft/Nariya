@@ -39,7 +39,7 @@ class G5_NARIYA {
 		add_event('comment_update_after', array($this, 'comment_insert'), 10, 5);
 
 		// 확장 플러그인
-		if(IS_NA_BBS || IS_NA_XP) {
+		if(IS_NA_BBS || IS_NA_XP || IS_NA_NOTI) {
 			// 글삭제
 			add_event('bbs_delete', array($this, 'bbs_delete'), 10, 2);
 
@@ -51,6 +51,18 @@ class G5_NARIYA {
 
 			// 새글삭제
 			add_event('bbs_new_delete', array($this, 'bbs_new_delete'), 10, 2);
+
+			// 알림
+			if(IS_NA_NOTI) {
+				// 글 추천
+		        add_event('bbs_increase_good_json', array($this, 'bbs_good'), 10, 3);
+
+				// 댓글 추천
+		        add_event('comment_increase_good_json', array($this, 'comment_good'), 10, 3);
+
+				// 1:1 문의
+				add_event('qawrite_update', array($this, 'qawrite_update'), 10, 4);
+			}
 
 			// 자동등업
 			if(IS_NA_XP) {
@@ -96,15 +108,84 @@ class G5_NARIYA {
 
 	}   // end function
 
+	// 1:1 문의
+	public function qawrite_update($qa_id=0, $write=array(), $w='', $qaconfig){
+		global $g5, $is_member, $member, $is_admin, $nariya;
+
+		// 알림
+		if(IS_NA_NOTI && $qa_id){
+
+			$noti = array();
+			$qa_write = array();
+
+			$qa_id = (int)$qa_id;
+
+			// 새글 알림
+			if($nariya['noti_qa'] && ($w === '' || $w === 'r')) {
+
+				$noti_mb = array();
+				$noti_mb = array_map('trim', explode(",", $nariya['noti_qa']));
+
+				if($is_member) {
+					array_diff($noti_mb, array($member['mb_id']));
+				}
+
+				$noti_cnt = count($noti_mb);
+				if($noti_cnt) {
+
+					$qa_write = sql_fetch(" select * from {$g5['qa_content_table']} where qa_id = '$qa_id' ");
+
+					$noti['wr_id'] = $noti['rel_wr_id'] = $qa_id;
+					$noti['rel_mb_id'] = $member['mb_id'];
+					$noti['rel_mb_nick'] = $member['mb_nick'];
+					$noti['rel_url'] = '/'.G5_BBS_DIR.'/qaview.php?qa_id='.$qa_id;
+					$noti['rel_msg'] = sql_real_escape_string(na_cut_text($qa_write['qa_content'], 70));
+					$noti['parent_subject'] = sql_real_escape_string(na_cut_text($qa_write['qa_subject'], 70));
+
+					// 알림 등록
+					for($i=0; $i < $noti_cnt; $i++) {
+						na_noti('inquire', 'inquire', $noti_mb[$i], $noti);
+					}
+				}
+			}
+
+			// 답변 알림
+			if($w === 'a'){
+				if(!isset($qa_write['qa_subject'])) {
+					$qa_write = sql_fetch(" select * from {$g5['qa_content_table']} where qa_id = '$qa_id' ");
+				}
+
+				if ($qa_write['mb_id'] !== $member['mb_id']) {
+
+					if(!isset($noti['wr_id'])) {
+						$noti['wr_id'] = $noti['rel_wr_id'] = $qa_id;
+						$noti['rel_mb_id'] = $member['mb_id'];
+						$noti['rel_mb_nick'] = $member['mb_nick'];
+						$noti['rel_url'] = '/'.G5_BBS_DIR.'/qaview.php?qa_id='.$qa_id;
+						$noti['parent_subject'] = sql_real_escape_string(na_cut_text($qa_write['qa_subject'], 70));
+					}						
+
+					$qa_answer = (isset($_POST['qa_subject'])) ? $_POST['qa_subject'] : '';
+					$noti['rel_msg'] = sql_real_escape_string(na_cut_text($qa_answer, 70));
+
+					// 알림
+					na_noti('inquire', 'answer', $qa_write['mb_id'], $noti);
+				}
+			}
+		}
+	}
+
 	// 글등록
 	public function write_insert($board, $wr_id, $w, $qstr, $redirect_url) {
-		global $g5, $member, $boset, $is_admin, $is_direct, $file_upload_msg;
+		global $g5, $member, $boset, $is_admin, $is_member, $is_direct, $file_upload_msg;
 
 		$wr = array();
+		$noti = array();
 
 		$bo_table = $board['bo_table'];
 		$write_table = $g5['write_prefix'] . $bo_table; // 게시판 테이블;
 		$is_save = (isset($boset['na_save_image']) && $boset['na_save_image']) ? true : false;
+		$wr_content = '';
 
 		// 게시판 확장
 		if(IS_NA_BBS) {
@@ -206,6 +287,86 @@ class G5_NARIYA {
 			}
 		}
 
+		// 알림
+		if(IS_NA_NOTI) {
+			// 새글 알림
+			if($w != 'u' && $boset['noti_mb']) {
+
+				$noti_mb = array();
+				$noti_mb = array_map('trim', explode(",", $boset['noti_mb']));
+
+				if($is_member) {
+					array_diff($noti_mb, array($member['mb_id']));
+				}
+
+				$noti_cnt = count($noti_mb);
+				if($noti_cnt) {
+					if(!isset($wr['mb_id'])) {
+						$wr = get_write($write_table, $wr_id, true);
+					}
+					if(!$wr_content) {
+						$wr_content = $wr['wr_content'];
+					}
+					$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr_content, 70));
+					$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_subject'], 90));
+					$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+					$noti['wr_id'] = $noti['wr_parent'] = $noti['rel_wr_id'] = $wr_id;
+					$noti['rel_mb_id'] = $wr['mb_id'];
+					$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id;
+
+					if($is_member){
+						$noti['rel_mb_nick'] = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+					} else {
+						$noti['rel_mb_nick'] = addslashes($wr['wr_name']);
+					}
+
+					// 알림 등록
+					for($i=0; $i < $noti_cnt; $i++) {
+
+						if($wr['mb_id'] && $noti_mb[$i] === $wr['mb_id'])
+							continue;
+
+						na_noti('board', 'write', $noti_mb[$i], $noti);
+					}
+				}
+			}
+
+			// 답글 알림
+			if($w == 'r' && isset($_POST['wr_id']) && $_POST['wr_id']) {
+				// 원글
+				$org = get_write(get_write_table_name($board['bo_table']), (int) $_POST['wr_id'], true);
+
+				if($org['mb_id'] && $member['mb_id'] !== $org['mb_id']) {
+
+					if(!isset($wr['mb_id'])) {
+						$wr = get_write($write_table, $wr_id, true);
+					}
+
+					if(!$wr_content) {
+						$wr_content = $wr['wr_content'];
+					}
+
+					unset($noti);
+					$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr_content, 70));
+					$noti['parent_subject'] = sql_real_escape_string(na_cut_text($org['wr_subject'], 90));
+					$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+					$noti['wr_id'] = $noti['wr_parent'] = $org['wr_id'];
+					$noti['rel_wr_id'] = $wr_id;
+					$noti['rel_mb_id'] = $wr['mb_id'];
+					$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id;
+
+					if($is_member){
+						$noti['rel_mb_nick'] = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+					} else {
+						$noti['rel_mb_nick'] = addslashes($wr['wr_name']);
+					}
+
+					// 알림 등록
+					na_noti('board', 'reply', $org['mb_id'], $noti);
+				}
+			}
+		}
+
 		// 목록으로 이동
 		if($w == '' && $is_direct) {
 			if($file_upload_msg) {
@@ -219,7 +380,7 @@ class G5_NARIYA {
 
 	// 댓글등록
 	public function comment_insert($board, $wr_id, $w, $qstr, $redirect_url) {
-		global $g5, $member, $comment_id, $boset;
+		global $g5, $is_member, $member, $comment_id, $boset;
 
 		// 게시판 테이블
 		$bo_table = $board['bo_table'];
@@ -288,10 +449,131 @@ class G5_NARIYA {
 			}
 		}
 
+		// 알림
+		if (IS_NA_NOTI && $comment_id && $w === 'c') {
+
+			$noti = array();
+
+			// 원글
+			$wr = get_write($write_table, $wr_id, true);
+			$request_comment_id = (isset($_POST['comment_id']) && $_POST['comment_id']) ? (int)$_POST['comment_id'] : 0;
+			
+			// 원댓글
+			$reply_array = ($request_comment_id) ? get_write($write_table, $request_comment_id, true) : array();
+
+			// 현댓글
+			$comment_wr = get_write($write_table, $comment_id, true);
+
+			// 자신의 댓글이 아닐 경우
+			$is_reply_noti = (isset($reply_array['mb_id']) && $reply_array['mb_id'] !== $member['mb_id']) ? true : false;
+			$mb_id = ($member['mb_id']) ? $member['mb_id'] : '';
+
+			// 댓글을 남긴 경우
+			if(($wr['mb_id'] && $wr['mb_id'] != $member['mb_id']) || $is_reply_noti){
+
+				if( $is_member ){
+					$noti['rel_mb_nick'] = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+				} else {
+					$noti['rel_mb_nick'] = addslashes($comment_wr['wr_name']);
+				}
+
+				// 대댓글인 경우
+				if(isset($reply_array['wr_is_comment']) && $reply_array['wr_is_comment']){
+					$ph_to_case = 'comment';
+					$tmp_mb_id = ($reply_array['mb_id']) ? $reply_array['mb_id'] : $wr['mb_id'];
+					$noti['wr_id'] = ($reply_array['wr_id']) ? $reply_array['wr_id'] : $wr_id;
+					$noti['parent_subject'] = sql_real_escape_string(na_cut_text($reply_array['wr_content'], 90));
+
+				} else { // 댓글인 경우
+					$ph_to_case = 'board';
+					$tmp_mb_id = $wr['mb_id'];
+					$noti['wr_id'] = $wr_id;
+					$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_subject'], 90));
+				}
+
+				if($tmp_mb_id !== $member['mb_id']) {
+					
+					$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+					$noti['wr_parent'] = $wr['wr_parent'];
+					$noti['rel_wr_id'] = $comment_id;
+					$noti['rel_mb_id'] = $mb_id;
+					$noti['rel_msg'] = sql_real_escape_string(na_cut_text($comment_wr['wr_content'], 70));
+					$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id."#c_".$comment_id;
+
+					// 알림 등록
+					na_noti($ph_to_case, 'comment', $tmp_mb_id, $noti);
+				}
+
+				// 원글 알림
+				if($reply_array['wr_id'] && ($wr['mb_id'] && $wr['mb_id'] != $member['mb_id'])){
+
+					// 원글을 쓴 회원이 댓글을 써서 그 댓글에 댓글을 다는 경우가 맞다면... sql에서 insert 하지 않는다.
+					$ph_readed = ($reply_array['mb_id'] && !strcmp($reply_array['mb_id'], $wr['mb_id'])) ? 'Y' : '';
+
+					if($ph_readed !== 'Y' ) {
+						if(!isset($noti['bo_table'])) {
+							$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+							$noti['wr_parent'] = $wr['wr_parent'];
+							$noti['rel_wr_id'] = $comment_id;
+							$noti['rel_mb_id'] = $mb_id;
+							$noti['rel_msg'] = sql_real_escape_string(na_cut_text($comment_wr['wr_content'], 70));
+							$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id."#c_".$comment_id;
+						}
+
+						// 알림 등록
+						na_noti('board', 'comment', $wr['mb_id'], $noti);
+					}
+				}
+			}
+		}
+
 	} // end function
+
+    public function bbs_good($bo_table, $wr_id, $good){
+        global $g5, $is_member, $member;
+
+        $ph_from_case = ($good === 'good') ? 'good' : 'nogood';
+
+        $wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
+
+		$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+		$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
+		$noti['wr_parent'] = $wr['wr_parent'];
+		$noti['rel_mb_id'] = $member['mb_id'];
+		$noti['rel_mb_nick'] = $member['mb_nick'];
+		$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
+		$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_subject'], 70));
+		$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id;
+
+		// 알림 등록
+		na_noti('board', $ph_from_case, $wr['mb_id'], $noti);
+    }
+
+    public function comment_good($bo_table, $wr_id, $good){
+        global $g5, $is_member, $member;
+
+        $ph_from_case = ($good === 'good') ? 'good' : 'nogood';
+
+        $wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
+
+		$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+		$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
+		$noti['wr_parent'] = $wr['wr_parent'];
+		$noti['rel_mb_id'] = $member['mb_id'];
+		$noti['rel_mb_nick'] = $member['mb_nick'];
+		$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
+		$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
+		$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr['wr_parent']."#c_".$wr_id;
+
+		// 알림 등록
+		na_noti('comment', $ph_from_case, $wr['mb_id'], $noti);
+    }
 
 	// 새글삭제
 	public function bbs_new_delete($chk_bn_id, $save_bo_table){
+		global $g5;
+				
+		$mb_ids = array();
 
 		if(is_array($chk_bn_id)){
 			for($i=0;$i<count($chk_bn_id);$i++){
@@ -302,8 +584,26 @@ class G5_NARIYA {
 				$wr_id    = isset($_POST['wr_id'][$k]) ? preg_replace('/[^a-z0-9_]/i', '', $_POST['wr_id'][$k]) : 0;
 
 				if($wr_id && $bo_table){
-					na_delete($bo_table, $wr_id); // 태그, 신고 등 삭제
+
+					// 태그, 신고 등 삭제
+					na_delete($bo_table, $wr_id);
+
+					// 읽지 않은 알림 삭제
+					if(IS_NA_NOTI) {
+						$result = sql_query(" select * from ".$g5['na_noti']." where ph_readed = 'N' and bo_table = '".$bo_table."' and rel_wr_id = '".$wr_id."' ");
+						while($row=sql_fetch_array($result)){
+							sql_query(" delete from ".$g5['na_noti']." where ph_id = '".$row['ph_id']."' ", false);
+							$mb_ids[] = $row['mb_id'];
+						}
+					}
 				}
+			}
+		}
+
+		if(IS_NA_NOTI && !empty($mb_ids)){
+			$mb_ids = array_unique($mb_ids);
+			foreach($mb_ids as $mb_id){
+				na_noti_update($mb_id);
 			}
 		}
 
@@ -311,9 +611,28 @@ class G5_NARIYA {
 
 	// 선택삭제
 	public function bbs_delete_all($tmp_array, $board){
+		global $g5;
+
+		$mb_ids = array();
 
 		foreach($tmp_array as $wr_id){
 			na_delete($board['bo_table'], $wr_id); // 태그, 신고 등 삭제
+
+			// 읽지 않은 알림 삭제
+			if(IS_NA_NOTI) {
+				$result = sql_query(" select * from ".$g5['na_noti']." where ph_readed = 'N' and bo_table = '".$board['bo_table']."' and rel_wr_id = '".$wr_id."' ");
+				while( $row=sql_fetch_array($result) ){
+					sql_query(" delete from ".$g5['na_noti']." where ph_id = '".$row['ph_id']."' ", false);
+					$mb_ids[] = $row['mb_id'];
+				}
+			}
+		}
+
+		if(IS_NA_NOTI && !empty($mb_ids)){
+			$mb_ids = array_unique($mb_ids);
+			foreach($mb_ids as $mb_id){
+				na_noti_update($mb_id);
+			}
 		}
 
 	} // end function

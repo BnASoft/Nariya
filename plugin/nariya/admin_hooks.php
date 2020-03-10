@@ -59,7 +59,7 @@ class G5_NARIYA_ADMIN {
 	}
 
 	public function admin_page_nariya($arr_query, $token){
-		global $is_admin, $auth;
+		global $g5, $is_admin, $auth, $member;
 		
 		if(isset($_POST['post_action']) && isset($_POST['token'])){
 			
@@ -82,6 +82,39 @@ class G5_NARIYA_ADMIN {
 			} else {
 				@mkdir($video_path, G5_DIR_PERMISSION);
 				@chmod($video_path, G5_DIR_PERMISSION);
+			}
+
+			// 알림(내글반응)
+			if(isset($_POST['na']['noti']) && $_POST['na']['noti'] && !isset($member['as_noti'])) {
+
+				// 회원정보 테이블에 필드 추가
+				sql_query(" ALTER TABLE `{$g5['member_table']}`
+								ADD `as_noti` int(11) NOT NULL DEFAULT '0' AFTER `mb_10` ", false);
+
+				// 알림(내글반응) 테이블 추가
+				$na_db_set = na_db_set();
+
+				if(!sql_query(" DESC {$g5['na_noti']} ", false)) {
+					sql_query(" CREATE TABLE IF NOT EXISTS `{$g5['na_noti']}` (
+								  `ph_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+								  `ph_to_case` varchar(50) NOT NULL DEFAULT '',
+								  `ph_from_case` varchar(50) NOT NULL DEFAULT '',
+								  `bo_table` varchar(20) NOT NULL DEFAULT '',
+								  `rel_bo_table` varchar(20) NOT NULL DEFAULT '',
+								  `wr_id` int(11) NOT NULL DEFAULT 0,
+								  `rel_wr_id` int(11) NOT NULL DEFAULT 0,
+								  `mb_id` varchar(255) NOT NULL DEFAULT '',
+								  `rel_mb_id` varchar(255) NOT NULL DEFAULT '',
+								  `rel_mb_nick` varchar(255) DEFAULT NULL,
+								  `rel_msg` varchar(255) NOT NULL DEFAULT '',
+								  `rel_url` varchar(200) NOT NULL DEFAULT '',
+								  `ph_readed` char(1) NOT NULL DEFAULT 'N',
+								  `ph_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+								  `parent_subject` varchar(255) NOT NULL,
+								  `wr_parent` int(11) DEFAULT 0,
+								  PRIMARY KEY (`ph_id`)
+							) ".$na_db_set."; ", false);
+				}
 			}
 
 			// 설정값

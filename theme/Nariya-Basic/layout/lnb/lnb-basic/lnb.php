@@ -25,18 +25,26 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
 					<li><a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a></li>
 				<?php } ?>
+				<?php if($config['cf_use_point']) { ?>
+					<li>
+						<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="win_point">
+							포인트 <b class="red"><?php echo number_format($member['mb_point']) ?></b>
+						</a>
+					</li>
+				<?php } ?>
+				<?php if(IS_NA_NOTI) { // 알림 ?>
+					<li><a href="<?php echo G5_BBS_URL ?>/noti.php">
+						알림<?php if ($member['as_noti']) { ?> <b class="orangered"><?php echo number_format($member['as_noti']) ?></b><?php } ?>
+						</a>
+					</li>
+				<?php } ?>
 				<li><a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="win_memo">
 					쪽지<?php if ($member['mb_memo_cnt']) { ?> <b class="orangered"><?php echo number_format($member['mb_memo_cnt']) ?></b><?php } ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="win_scrap">
-						스크랩<?php if($member['mb_scrap_cnt']) { ?> <b><?php echo number_format($member['mb_scrap_cnt']) ?></b><?php } ?>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="win_point">
-						포인트 <b class="red"><?php echo number_format($member['mb_point']) ?></b>
+						스크랩
 					</a>
 				</li>
 				<li>

@@ -57,6 +57,42 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			</tr>
 			<tr>
 				<th scope="row">
+					알림 설정
+				</th>
+				<td colspan="3">
+					<?php echo help('/'.G5_PLUGIN_DIR.'/'.NA_DIR.'/skin/noti 폴더') ?>
+					<select name="na[noti]">
+						<option value="">사용안함</option>
+						<?php 
+						unset($skins);
+						$skins = na_dir_list(NA_PLUGIN_PATH.'/skin/noti');
+						for ($i=0; $i<count($skins); $i++) { 
+						?>
+							<option value="<?php echo $skins[$i] ?>"<?php echo get_selected($nariya['noti'], $skins[$i]) ?>><?php echo $skins[$i] ?></option>
+						<?php } ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					알림 보관일
+				</th>
+				<td colspan="3">
+					<?php echo help('설정일이 지난 알림 자동 삭제, 0 이면 사용안함') ?>
+					<input type="text" name="na[noti_days]" value="<?php echo $nariya['noti_days'] ?>" class="frm_input" size="5"> 일
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					문의 알림
+				</th>
+				<td colspan="3">
+					<?php echo help('1:1 문의에 새글 등록시 알림받을 회원아이디 목록으로 콤마(,)로 구분하여 복수등록 가능합니다.') ?>
+					<input type="text" name="na[noti_qa]" value="<?php echo $nariya['noti_qa'] ?>" class="frm_input" size="80">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
 					공유 동영상 이미지
 				</th>
 				<td colspan="3">
@@ -89,8 +125,17 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					구글맵 API 키
 				</th>
 				<td colspan="3">
-					<?php echo help('구글맵 사용을 위해서는 Google API Console에서 서버키(안되면 브라우저 API 키)를 발급받은 후 라이브러리에서 Google Maps JavaScript API를 사용설정해야 합니다.') ?>
+					<?php echo help('Google API Console에서 서버키(안되면 브라우저 API 키)를 발급받은 후 라이브러리에서 Google Maps JavaScript API를 사용설정해야 합니다.') ?>
 					<input type="text" name="na[google_key]" value="<?php echo $nariya['google_key'] ?>" class="frm_input" size="80">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					유튜브 API 키
+				</th>
+				<td colspan="3">
+					<?php echo help('Google API Console에서 서버키(안되면 브라우저 API 키)를 발급받은 후 라이브러리에서 YouTube Data API를 사용설정해야 합니다.') ?>
+					<input type="text" name="na[youtube_key]" value="<?php echo $nariya['youtube_key'] ?>" class="frm_input" size="80">
 				</td>
 			</tr>
 			</tbody>

@@ -62,7 +62,7 @@ function na_fa($str){
 
 // Emoticon Icon
 function na_emo($str){
-	$str = preg_replace_callback("/{(이모티콘|emo)\:([^}]*)}/is", "na_callback_emo", $str); // Emoticon
+	$str = preg_replace_callback("/{(이모티콘|emo)\:([^}]*)}/is", "na_callback_emo", $str); // Emoticon 
 	return $str;
 }
 
@@ -72,7 +72,7 @@ function na_content($str) {
 	$str = preg_replace_callback("/{(지도|map)\:([^}]*)}/is", "na_callback_map", $str); // Map
 	$str = preg_replace_callback("/{(동영상|video)\:([^}]*)}/is", "na_callback_video", $str); // Video
 	$str = preg_replace_callback("/{(아이콘|icon)\:([^}]*)}/is", "na_callback_icon", $str); // FA Icon
-	$str = preg_replace_callback("/{(이모티콘|emo)\:([^}]*)}/is", "na_callback_emo", $str); // Emoticon
+	$str = preg_replace_callback("/{(이모티콘|emo)\:([^}]*)}/is", "na_callback_emo", $str); // Emoticon 
 	$str = preg_replace_callback("/\[soundcloud([^\]]*)\]/is", "na_callback_soundcloud", $str); // SoundCloud
 	$str = preg_replace_callback("/(\[code\]|\[code=(.*)\])(.*)\[\/code\]/iUs", "na_syntaxhighlighter", $str); // SyntaxHighlighter
 
@@ -86,13 +86,13 @@ function na_get_star($avg, $opt='') {
 
 	list($star_s, $star_m) = explode(".", $avg);
 
-	$star_e = ($star_m) ? 4 - $star_s : 5 - $star_s;
+	$star_e = ($star_m) ? 4 - $star_s : 5 - $star_s; 
 
 	for($j=0; $j < $star_s; $j++) {
 		$star .= '<i class="fa fa-star '.$opt.'"></i>';
 	}
 
-	if($star_m)
+	if($star_m) 
 		$star .= '<i class="fa fa-star-half-empty '.$opt.'"></i>';
 
 	for($j=0; $j < $star_e; $j++) {
@@ -105,7 +105,7 @@ function na_get_star($avg, $opt='') {
 // 확장자 종류체크
 function na_ext_type($file) {
 
-	if(!$file)
+	if(!$file) 
 		return;
 
 	$video = array("mp4", "m4v", "f4v", "mov", "flv", "webm");
@@ -115,7 +115,7 @@ function na_ext_type($file) {
 	$pdf = array("pdf");
 	$torrent = array("torrent");
 
-	$ext = strtolower(substr(strrchr($file, "."), 1));
+	$ext = strtolower(substr(strrchr($file, "."), 1)); 
 
 	$type = 0;
 	if(in_array($ext, $image)) {
@@ -161,14 +161,14 @@ function na_paging($write_pages, $cur_page, $total_page, $url, $add='') {
 	$start_page = (((int)(($cur_page - 1 ) / $write_pages)) * $write_pages) + 1;
 	$end_page = $start_page + $write_pages - 1;
 
-	if ($end_page >= $total_page) {
+	if ($end_page >= $total_page) { 
 		$end_page = $total_page;
 	}
 
-	if ($start_page > 1) {
+	if ($start_page > 1) { 
 		$str .= '<li><a href="'.$url.($start_page-1).$add.'">'.$prev.'</a></li>';
 	} else {
-		$str .= '<li class="disabled"><a>'.$prev.'</a></li>';
+		$str .= '<li class="disabled"><a>'.$prev.'</a></li>'; 
 	}
 
 	if ($total_page > 0){
@@ -225,14 +225,14 @@ function na_ajax_paging($id, $write_pages, $cur_page, $total_page, $url, $add=''
 	$start_page = (((int)(($cur_page - 1 ) / $write_pages)) * $write_pages) + 1;
 	$end_page = $start_page + $write_pages - 1;
 
-	if ($end_page >= $total_page) {
+	if ($end_page >= $total_page) { 
 		$end_page = $total_page;
 	}
 
-	if ($start_page > 1) {
+	if ($start_page > 1) { 
 		$str .= '<li><a href="javascript:;" onclick="na_page(\''.$id.'\', \''.$url.($start_page-1).$add.'\', \'1\'); return false;">'.$prev.'</a></li>';
 	} else {
-		$str .= '<li class="disabled"><a>'.$prev.'</a></li>';
+		$str .= '<li class="disabled"><a>'.$prev.'</a></li>'; 
 	}
 
 	if ($total_page > 0){
@@ -322,7 +322,7 @@ function na_map($geo_data) {
 
 	$geo_data = stripslashes($geo_data);
 
-	if(!$geo_data)
+	if(!$geo_data) 
 		return;
 
 	$geo_data = str_replace(array("&#034;", "&#039;"), array("\"", "'"), $geo_data);
@@ -337,7 +337,7 @@ function na_map($geo_data) {
 		$map['geo'] = (isset($map['geo']) && $map['geo']) ? $map['geo'] : '';
 		list($lat, $lng, $zoom) = explode(",", $map['geo']);
 	}
-
+	
 	if(!$lat || !$lng) return;
 
 	//Map
@@ -393,7 +393,7 @@ function na_member_photo($mb_id){
 
     static $no_profile_cache = '';
     static $member_cache = array();
-
+    
     $src = '';
 
     if( $mb_id ){
@@ -455,7 +455,7 @@ function na_sns_share_icon($url, $title, $img='', $icon='', $eol='') {
 	$sns_img = ($icon) ? $icon : NA_PLUGIN_URL.'/img/sns';
 
 	$eol = ($eol) ? '' : PHP_EOL;
-
+	
 	$is_kakao = false;
 	if($config['cf_kakao_js_apikey']) {
 		if(!defined('NA_KAKAO')) {
@@ -536,31 +536,20 @@ function na_wr_img($bo_table, $wr) {
 
 	// 직접 첨부
 	if($wr['wr_file']) {
-		if(count($wr['file']) > 1) {
-			for($i=0;$i<$wr['wr_file'];$i++) {
-				if ($wr['file'][$i]['view']) {
-					$img[$z] = $wr['file'][$i]['path'].'/'.$wr['file'][$i]['file'];
-					$z++;
-					if(!$all && $z == $rows)
-						return na_img_rows($img, $rows);
-				}
-			}
-		} else {
-			$sql = " select bf_file, bf_content
-						from {$g5['board_file_table']}
-						where bo_table = '$bo_table'
-							and wr_id = '{$wr['wr_id']}'
-							and bf_type between '1' and '3'
-						order by bf_no ";
-			$result = sql_query($sql, false);
-			for ($i=0; $row=sql_fetch_array($result); $i++) {
-				if($row['bf_file']) {
-					$img[$z] = G5_DATA_URL.'/file/'.$bo_table.'/'.$row['bf_file'];
-					$z++;
-					if(!$all && $z == $rows)
-						return na_img_rows($img, $rows);
-				}
-			}
+		$sql = " select bf_file, bf_content 
+					from {$g5['board_file_table']} 
+					where bo_table = '$bo_table' 
+						and wr_id = '{$wr['wr_id']}' 
+						and bf_type between '1' and '3' 
+					order by bf_no ";
+		$result = sql_query($sql, false);
+		for ($i=0; $row=sql_fetch_array($result); $i++) {
+			if($row['bf_file']) {
+				$img[$z] = G5_DATA_URL.'/file/'.$bo_table.'/'.$row['bf_file'];
+				$z++;
+				if(!$all && $z == $rows)
+					return na_img_rows($img, $rows);
+			} 
 		}
 	}
 
@@ -577,7 +566,7 @@ function na_wr_img($bo_table, $wr) {
 
 		$img[$z] = str_replace(G5_PATH, G5_URL, $vimg);
 		$z++;
-		if(!$all && $z == $rows)
+		if(!$all && $z == $rows) 
 			return na_img_rows($img, $rows);
 	}
 
@@ -622,12 +611,12 @@ function na_wr_img($bo_table, $wr) {
 
 				$vimg = na_video_img(na_video_info(trim(strip_tags($vimgs[$i]))));
 
-				if(!$vimg || $vimg == 'none')
+				if(!$vimg || $vimg == 'none') 
 					continue;
 
 				$img[$z] = str_replace(G5_PATH, G5_URL, $vimg);
 				$z++;
-				if(!$all && $z == $rows)
+				if(!$all && $z == $rows) 
 					return na_img_rows($img, $rows);
 
 			}
@@ -638,7 +627,7 @@ function na_wr_img($bo_table, $wr) {
 		for($i=0; $i < $link_cnt; $i++) {
 			$img[$z] = $link[$i];
 			$z++;
-			if(!$all && $z == $rows)
+			if(!$all && $z == $rows) 
 				return na_img_rows($img, $rows);
 		}
 	}
@@ -702,7 +691,7 @@ function na_video_info($video_url) {
 	$video_url = trim(strip_tags($video_url));
 
 	list($url, $opt) = explode("|", $video_url);
-
+	
 	$url = trim($url);
 
 	if($url) {
@@ -728,10 +717,10 @@ function na_video_info($video_url) {
 		return $video;
 	}
 
-	$info = @parse_url($video['video_url']);
-	if($info['query'])
-		parse_str($info['query'], $query);
-
+	$info = @parse_url($video['video_url']); 
+	if($info['query']) 
+		parse_str($info['query'], $query); 
+	
 	// 확장자 체크 && jwplayer
 	$filename = basename($info['path']);
 	if($filename) {
@@ -753,7 +742,7 @@ function na_video_info($video_url) {
 		// Youtube
 		case 'www.youtube.com' :
 		case 'm.youtube.com'   :
-		case 'youtu.be'		   :
+		case 'youtu.be'		   :   
 			$video['type'] = 'youtube';
 			if($info['host'] == 'youtu.be') {
 				$video['vid'] = trim(str_replace("/","", trim($info['path'])));
@@ -769,9 +758,9 @@ function na_video_info($video_url) {
 			}
 
 			$video['s'] = ($option['s']) ? $option['s'] : $query['s'];
-			if($video['s']) {
-				$vw = 480;
-				$vh = 880;
+			if($video['s']) { 
+				$vw = 480; 
+				$vh = 880; 
 			}
 			$vlist = ($query['list']) ? '&list='.$query['list'] : '';
 			$start = ($option['start']) ? $option['start'] : $query['start'];
@@ -786,7 +775,7 @@ function na_video_info($video_url) {
 			$vquery = explode("/",$video['video_url']);
 			$num = count($vquery) - 1;
 			list($video['vid']) = explode("#",$vquery[$num]);
-			$vw = 717;
+			$vw = 717; 
 			$vh = 403;
 			$autoplay = ($boset['na_autoplay']) ? '&amp;autoplay=1' : '';
 			$video['iframe'] = '<iframe src="https://player.vimeo.com/video/'.$video['vid'].'?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff'.$autoplay.'&amp;wmode=opaque" width="'.$vw.'" height="'.$vh.'" frameborder="0"'.$fs.'></iframe>';
@@ -893,7 +882,7 @@ function na_video_info($video_url) {
 				$video['vid'] = $query['vid'];
 				$video['outKey'] = $query['outKey'];
 			} else {
-				list($vid) = explode("/", trim(str_replace("/v/","",$info['path'])));
+				list($vid) = explode("/", trim(str_replace("/v/","",$info['path']))); 
 				$video['vid'] = $vid;
 			}
 			$vw = 740;
@@ -939,7 +928,7 @@ function na_video_info($video_url) {
 			$vtmp = explode("/v/", trim($info['path']));
 			$vquery = explode("/", $vtmp[1]);
 			$video['vid'] = $vquery[0];
-			$vw = 600;
+			$vw = 600; 
 			$vh = 600;
 			$video['iframe'] = '<iframe src="https://vine.co/v/'.$video['vid'].'/embed/simple" width="'.$vw.'" height="'.$vh.'" frameborder="0"'.$fs.'></iframe>';
 			break;
@@ -949,8 +938,8 @@ function na_video_info($video_url) {
 		case 'v.yinyuetai.com'		 :
 			$video['type'] = 'yinyuetai';
 			$video['vid'] = str_replace("/", "", str_replace("v_0.swf", "", str_replace("player", "", str_replace("video","",$info['path']))));
-			$vw = 480;
-			$vh = 334;
+			$vw = 480; 
+			$vh = 334; 
 			$video['iframe'] = '<embed src="https://player.yinyuetai.com/video/player/'.$video['vid'].'/v_0.swf" quality="high" width="'.$vw.'" height="'.$vh.'" align="middle" allowScriptAccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash"></embed>';
 			break;
 
@@ -960,12 +949,12 @@ function na_video_info($video_url) {
 			$vtmp = explode("/video/", trim($info['path']));
 			$vquery = explode("/", $vtmp[1]);
 			$video['vid'] = $vquery[0];
-			$vw = 544;
-			$vh = 306;
+			$vw = 544; 
+			$vh = 306; 
 			$autoplay = ($boset['na_autoplay']) ? '?autoPlay=true' : '';
 			$video['iframe'] = '<iframe src="https://www.vlive.tv/embed/'.$video['vid'].$autoplay.'" width="'.$vw.'" height="'.$vh.'" frameborder="no" scrolling="no" marginwidth="0" marginheight="0"'.$fs.'></iframe>';
 			break;
-
+			
 		// Srook
 		case 'www.srook.net'  :
 			$video['type'] = 'srook';
@@ -974,8 +963,8 @@ function na_video_info($video_url) {
 			$video['key'] = $vquery[2];
 			$video['vid'] = $video['author'].'_'.$video['key'];
 			$video['pageNo'] = ($query['pageNo']) ? '&pageNo='.$query['pageNo'] : '';
-			$vw = 720;
-			$vh = 480;
+			$vw = 720; 
+			$vh = 480; 
 			$video['iframe'] = '<iframe src="https://www.srook.net/nemo_embed/srookviewer.html?author='.$video['author'].'&key='.$video['key'].'&btype=0'.$video['pageNo'].'" width="'.$vw.'" height="'.$vh.'" frameborder="no" scrolling="no" marginwidth="0" marginheight="0"'.$fs.'></iframe>';
 			break;
 
@@ -985,8 +974,8 @@ function na_video_info($video_url) {
 			$vtmp = explode("/videos/", trim($info['path']));
 			$vquery = explode("/", $vtmp[1]);
 			$video['vid'] = $vquery[0];
-			$vw = 620;
-			$vh = 378;
+			$vw = 620; 
+			$vh = 378; 
 			$video['iframe'] = '<iframe src="https://player.twitch.tv/?video=v'.$video['vid'].'&autoplay=false&wmode=opaque" width="'.$vw.'" height="'.$vh.'" frameborder="no" scrolling="no"'.$fs.'></iframe>';
 			break;
 
@@ -1020,10 +1009,10 @@ function na_video($vid, $opt='') {
 	$vid = str_replace("&nbsp;", " ", $vid);
 	$video = na_video_info($vid);
 
-	if($opt)
+	if($opt) 
 		return $video; //비디오 정보만 넘기기
 
-	if(!$video['vid'])
+	if(!$video['vid']) 
 		return;
 
 	// JWPLAYER6
@@ -1114,7 +1103,7 @@ function na_video_imgurl($video) {
 
 	} else if($type == "facebook"){
 
-		if(!$nariya['fb_key'])
+		if(!$nariya['fb_key']) 
 			return;
 
 		$ch = curl_init();
@@ -1126,7 +1115,7 @@ function na_video_imgurl($video) {
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		$output = json_decode(curl_exec($ch));
 		curl_close($ch);
-
+		
 		$imgurl = $output->picture;
 
 	} else if($type == "naver" || $type == "tvcast"){ //라니안님 코드 반영
@@ -1137,10 +1126,10 @@ function na_video_imgurl($video) {
 			;
 		} else {
 			$url_type = ($type == "naver") ? "nmv" : "rmcnmv"; // 네이버 블로그 영상과 tvcast 영상 구분
-			parse_str($info['query'], $query);
+			parse_str($info['query'], $query); 
 
 			$vid .= "&outKey=".$query['outKey'];
-
+		
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "https://serviceapi.{$url_type}.naver.com/flash/videoInfo.nhn?vid=".$vid);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -1155,16 +1144,16 @@ function na_video_imgurl($video) {
 		}
 
 	}
-
+	
 	if(!$imgurl) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
-		@curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		@curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);    
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 		if($type == "soundcloud") {
-			$useragent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0';
+			$useragent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0'; 
 			curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
 		}
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
@@ -1195,10 +1184,10 @@ function na_video_imgurl($video) {
 function na_video_img($video, $fimg='') {
 	global $nariya;
 
-	if(!$video['type'])
+	if(!$video['type']) 
 		return;
 
-	if($video['type'] == 'file')
+	if($video['type'] == 'file') 
 		return $fimg;
 
 	// 동영상 대표이미지 링크 그대로 사용
@@ -1239,18 +1228,18 @@ function na_video_img($video, $fimg='') {
 		if($imgurl) {
 			$ch = curl_init ($imgurl);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 		    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-			curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1); 
 			curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 			$err = curl_error($ch);
-			if(!$err)
+			if(!$err) 
 				$rawdata=curl_exec($ch);
 			curl_close ($ch);
 			if($rawdata) {
-				$fp = fopen($img,'w');
-				fwrite($fp, $rawdata);
-				fclose($fp);
+				$fp = fopen($img,'w'); 
+				fwrite($fp, $rawdata); 
+				fclose($fp); 
 				@chmod($img, G5_FILE_PERMISSION);
 				@unlink($no_img);
 				return $img;
@@ -1261,7 +1250,7 @@ function na_video_img($video, $fimg='') {
 				}
 				return;
 			}
-		}
+		} 
 
 		if(!is_file($no_img)) {
 			@copy($no_image, $no_img);
@@ -1269,7 +1258,7 @@ function na_video_img($video, $fimg='') {
 		}
 
 		return;
-	}
+	} 
 
 	return;
 }
@@ -1295,7 +1284,7 @@ function na_video_id($vinfo) {
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 	if($type == "soundcloud") {
-		$useragent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0';
+		$useragent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0'; 
 		curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
 	}
 	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
@@ -1303,43 +1292,43 @@ function na_video_id($vinfo) {
 	curl_close($ch);
 
 	switch($type) {
-		case 'tvcast' :
-			$name = 'property';
-			$key = 'og:video:url';
-			$value = 'content';
+		case 'tvcast' : 
+			$name = 'property'; 
+			$key = 'og:video:url'; 
+			$value = 'content'; 
 			break;
 
-		case 'daum' :
-			$name = 'property';
-			$key = 'og:url';
-			$value = 'content';
+		case 'daum' : 
+			$name = 'property'; 
+			$key = 'og:url'; 
+			$value = 'content'; 
 			break;
 
-		case 'kakao' :
-			$name = 'property';
-			$key = 'og:url';
-			$value = 'content';
+		case 'kakao' : 
+			$name = 'property'; 
+			$key = 'og:url'; 
+			$value = 'content'; 
 			break;
 
-		case 'pandora' :
-			$name = 'property';
-			$key = 'og:url';
-			$value = 'content';
+		case 'pandora' : 
+			$name = 'property'; 
+			$key = 'og:url'; 
+			$value = 'content'; 
 			break;
 
-		case 'slideshare' :
-			$name = 'name';
-			$key = 'twitter:player';
-			$value = 'value';
+		case 'slideshare' : 
+			$name = 'name'; 
+			$key = 'twitter:player'; 
+			$value = 'value'; 
 			break;
 
-		case 'soundcloud' :
-			$name = 'property';
-			$key = 'twitter:player';
-			$value = 'content';
+		case 'soundcloud' : 
+			$name = 'property'; 
+			$key = 'twitter:player'; 
+			$value = 'content'; 
 			break;
 
-		default :
+		default : 
 			break;
 	}
 
@@ -1362,11 +1351,11 @@ function na_video_id($vinfo) {
 
 	if(!$content)
 		return $play;
-
+	
 	$info = @parse_url($content);
 	switch($type) {
 		case 'tvcast' :
-			@parse_str($info['query'], $query);
+			@parse_str($info['query'], $query); 
 			$play['vid'] = $query['vid'];
 			$play['outKey']= $query['outKey'];
 			break;
@@ -1382,7 +1371,7 @@ function na_video_id($vinfo) {
 
 		case 'slideshare' :
 			$play['play_url'] = $content;
-			$play['vid'] = trim(str_replace("/slideshow/embed_code/","",$info['path']));
+			$play['vid'] = trim(str_replace("/slideshow/embed_code/","",$info['path'])); 
 			break;
 
 		case 'soundcloud' :
@@ -1393,7 +1382,7 @@ function na_video_id($vinfo) {
 			}
 			break;
 
-		default	:
+		default	: 
 			break;
 	}
 
@@ -1403,7 +1392,7 @@ function na_video_id($vinfo) {
 // Jwpalyer Caption
 function na_get_caption($attach, $source, $num) {
 
-	if(!$source)
+	if(!$source) 
 		return;
 
 	$carr = array();
@@ -1416,7 +1405,7 @@ function na_get_caption($attach, $source, $num) {
 
 	for ($i=0; $i < $attach['count']; $i++) {
 
-		if($i == $num)
+		if($i == $num) 
 			continue;
 
 		$file = na_file_info($attach[$i]['source']);
@@ -1443,7 +1432,7 @@ function na_jwplayer_list($url) {
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
-	@curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	@curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);    
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
@@ -1461,7 +1450,7 @@ function na_jwplayer_list($url) {
 function na_jwplayer($url, $img='', $caption='', $title=''){
 	global $nariay, $boset;
 
-	if(!$url)
+	if(!$url) 
 		return;
 
 	$video = na_check_ext('video');
@@ -1489,7 +1478,7 @@ function na_jwplayer($url, $img='', $caption='', $title=''){
 	// 자동실행
 	$auto = ($boset['na_autoplay']) ? 'true' : 'false';
 
-	$jw_script = '';
+	$jw_script = '';	
 	if($type == 'audio' && !$img && !$caption) {
 		$jw_script .= '<script>
 					    jwplayer("'.$jw_id.'").setup({
@@ -1575,19 +1564,19 @@ function na_video_attach($attach='', $num='') {
 
 					$video .= na_jwplayer($attach[$i]['path'].'/'.$attach[$i]['file'], $screen, $caption, $title);
 
-					if(count($except) > 0)
+					if(count($except) > 0) 
 						$exceptfile = array_merge($exceptfile, $except);
 				}
 			}
 		}
 
 		// 동영상 이미지는 출력이미지에서 제외
-		if(isset($view['file']) && count($exceptfile)) {
+		if(isset($view['file']) && count($exceptfile)) { 
 			$refile = array();
 			$j = 0;
 			for ($i=0; $i<$attach['count']; $i++) {
 
-				if (in_array($i, $exceptfile))
+				if (in_array($i, $exceptfile)) 
 					continue;
 
 				$refile[$j] = $attach[$i];
@@ -1616,7 +1605,7 @@ function na_video_link($link, $num='', $img='') {
 	$link_cnt = count($link);
 	for ($i=0; $i<=$link_cnt; $i++) {
 
-		if(!$link[$i])
+		if(!$link[$i]) 
 			continue;
 
 		list($url) = explode("|", $link[$i]);
@@ -1686,19 +1675,19 @@ function na_check_tag($tag) {
 
 	$tag = str_replace(array("\"", "'"), array("", ""), na_get_text($tag));
 
-	if(!$tag)
+	if(!$tag) 
 		return;
-
+	
 	$list = array();
 	$arr = array_map('trim', explode(',', $tag));
 	foreach($arr as $tmp) {
-		if(!$tmp)
+		if(!$tmp) 
 			continue;
 
 		$list[] = $tmp;
 	}
 
-	if(count($list) == 0)
+	if(count($list) == 0) 
 		return;
 
 	$list = array_unique($list);
@@ -1741,7 +1730,7 @@ function na_add_tag($it_tag, $bo_table, $wr_id='', $mb_id='') {
 	// 태그정리
 	$it_tag = na_check_tag($it_tag);
 
-	if(!$it_tag)
+	if(!$it_tag) 
 		return;
 
 	// 카운팅이 0 또는 음수인 태그 삭제
@@ -1759,7 +1748,7 @@ function na_add_tag($it_tag, $bo_table, $wr_id='', $mb_id='') {
 			list($type, $idx) = na_chosung($tag);
 			sql_query("insert into {$g5['na_tag']} set type = '{$type}', idx = '{$idx}', tag='".addslashes($tag)."', cnt=1, regdate='".G5_TIME_YMDHIS."', lastdate='".G5_TIME_YMDHIS."'");
 			$tag_id = sql_insert_id();
-		}
+		} 
 
 		sql_query("insert into {$g5['na_tag_log']} set bo_table = '{$bo_table}', wr_id = '{$wr_id}', tag_id = '{$tag_id}', tag = '".addslashes($tag)."', mb_id = '{$mb_id}', regdate = '".G5_TIME_YMDHIS."' ");
 	}
@@ -1772,7 +1761,7 @@ function na_get_tag($it_tag, $opt='') {
 
 	$it_tag = na_get_text($it_tag);
 
-	if(!$it_tag)
+	if(!$it_tag) 
 		return;
 
 	$tags = array();
@@ -1780,7 +1769,7 @@ function na_get_tag($it_tag, $opt='') {
 
 	if($opt) { //해시태그
 		$hash1 = '<span class="hash-tag">#';
-		$hash2 = '</span>';
+		$hash2 = '</span>';	
 	} else {
 		$hash1 = '';
 		$hash2 = '';

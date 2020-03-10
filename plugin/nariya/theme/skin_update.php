@@ -8,7 +8,7 @@ if ($is_admin != 'super')
 
 $skin = na_fid($skin);
 
-$skin_arr = array('board', 'connect', 'faq', 'member', 'new', 'search', 'qa', 'tag', 'shingo');
+$skin_arr = array('board', 'connect', 'faq', 'member', 'new', 'search', 'qa', 'tag', 'shingo', 'noti');
 if($skin && in_array($skin, $skin_arr)) { 
 	; //통과
 	if($skin == 'board' && !$board['bo_table']) {
