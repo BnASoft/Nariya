@@ -13,19 +13,9 @@
 	-moz-box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 	
 }
 #nt_sidebar .sidebar-content {
-	height: 90vh;
+	height: 95vh;
 	overflow-x:hidden; 
 	-webkit-overflow-scrolling:touch; 
-}
-@media (max-width: 767px) {
-	.responsive #nt_sidebar .sidebar-content {
-		height: 85vh;
-	}
-}
-@media (max-width: 480px) {
-	.responsive #nt_sidebar .sidebar-content {
-		height: 80vh;
-	}
 }
 
 /* Top Line */

@@ -263,9 +263,10 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 				<?php } ?>
 			</ul>
 		</div>	
+
+		<!-- 스크롤바 하단 여백용 -->
+		<div class="h30 clearfix"></div>
 	</div>
-	<!-- 스크롤바 하단 여백용 -->
-	<div class="h30 clearfix"></div>
 </aside>
 
 <div id="nt_sidebar_mask" class="sidebar-close"></div>

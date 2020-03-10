@@ -22,17 +22,17 @@ $id = 'carousel_'.na_rid();
 		}
 		@media (max-width:991px) { 
 			.responsive #<?php echo $id;?> .img-wrap { 
-				padding-bottom:<?php echo ($wset['hmd']) ? $wset['hmd'] : '25%' ;?> !important; 
+				padding-bottom:<?php echo ($wset['hmd']) ? $wset['hmd'] : '30%' ;?> !important; 
 			} 
 		}
 		@media (max-width:767px) { 
 			.responsive #<?php echo $id;?> .img-wrap { 
-				padding-bottom:<?php echo ($wset['hsm']) ? $wset['hsm'] : '30%' ;?> !important; 
+				padding-bottom:<?php echo ($wset['hsm']) ? $wset['hsm'] : '35%' ;?> !important; 
 			} 
 		}
 		@media (max-width:480px) { 
 			.responsive #<?php echo $id;?> .img-wrap { 
-				padding-bottom:<?php echo ($wset['hxs']) ? $wset['hxs'] : '25%' ;?> !important; 
+				padding-bottom:<?php echo ($wset['hxs']) ? $wset['hxs'] : '40%' ;?> !important; 
 			} 
 		}
 	<?php } ?>

@@ -67,13 +67,14 @@ for ($i=0; $i < $list_cnt; $i++) {
 			</a> 
 		</div>
 
-		<span class="pull-right lightgray f-small">
-			&nbsp;<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d'); ?>
-		</span>
-
-		<?php echo $list[$i]['name'];?>
-
-		<div class="clearfix"></div>
+		<div class="clearfix f-small">
+			<span class="pull-left">
+				<?php echo $list[$i]['name'];?>
+			</span>
+			<span class="pull-right lightgray f-small">
+				&nbsp;<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d'); ?>
+			</span>
+		</div>
 	</li>
 <?php } ?>
 

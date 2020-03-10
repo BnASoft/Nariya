@@ -10,6 +10,7 @@ if(!defined('IS_YC')) {
 }
 
 // DEMO
+$dset = array();
 if(!defined('IS_DEMO')) {
 	(is_dir(G5_PATH.'/DEMO')) ? define('IS_DEMO', true) : define('IS_DEMO', false);
 }

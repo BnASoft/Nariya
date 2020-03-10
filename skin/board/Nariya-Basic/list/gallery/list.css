@@ -28,7 +28,7 @@
 	border-top-style:solid; 
 }
 .bo_list .tr {
-	border-bottom:1px solid #ddd; 
+	border-bottom:1px solid #e7e5e9; 
 }
 .bo_list .wr-cont .tr {
 	border-bottom:0; 
@@ -42,7 +42,7 @@
 }
 .bo_list .tr:hover { 
 	color:#000; 
-	background-color:#F8F8F8; 
+	background-color:#f8f8f8;
 }
 .bo_list .wr-cont .wr-subject { 
 	text-align:left;

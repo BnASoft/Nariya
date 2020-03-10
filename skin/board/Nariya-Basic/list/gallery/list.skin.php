@@ -5,8 +5,8 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 add_stylesheet('<link rel="stylesheet" href="'.$list_skin_url.'/list.css">', 0);
 
 // 이미지 영역 및 썸네일 크기 설정
-$boset['thumb_w'] = ($boset['thumb_w'] == "") ? 400 : (int)$boset['thumb_w'];
-$boset['thumb_h'] = ($boset['thumb_h'] == "") ? 225 : (int)$boset['thumb_h'];
+$boset['thumb_w'] = ($boset['thumb_w'] == "") ? 320 : (int)$boset['thumb_w'];
+$boset['thumb_h'] = ($boset['thumb_h'] == "") ? 180 : (int)$boset['thumb_h'];
 
 if($boset['thumb_w'] && $boset['thumb_h']) {
 	$height = ($boset['thumb_w'] / $boset['thumb_h']) * 100;
@@ -165,13 +165,15 @@ if($board['bo_notice']) {
 				</a> 
 			</div>
 
-			<span class="pull-right lightgray f-small">
-				&nbsp;<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d') ?>
-			</span>
+			<div class="clearfix f-small">
+				<span class="pull-left">
+					<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
+				</span>
 
-			<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
-
-			<div class="clearfix"></div>
+				<span class="pull-right lightgray">
+					&nbsp;<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d') ?>
+				</span>
+			</div>
 		</li>
 	<?php } ?>
 	</ul>

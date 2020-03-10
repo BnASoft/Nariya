@@ -96,8 +96,13 @@
 	position:relative;
 }
 #nt_menu .me-head,
-#nt_menu .me-tail { 
+#nt_menu .me-tail {
 	width:50px; 
+}
+#nt_menu .me-head .me-li,
+#nt_menu .me-tail .me-li {
+	width:50px; 
+	float:left;
 	text-align:center;
 }
 #nt_menu .me-head a > i,
@@ -151,6 +156,9 @@
 	height:44px;
 	line-height:44px;
 	font-weight:bold;
+}
+#nt_menu .me-list .me-li { 
+	float:left;
 }
 #nt_menu .me-li.on .me-a,
 #nt_menu .me-li:hover .me-a { 

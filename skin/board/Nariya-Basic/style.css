@@ -274,26 +274,32 @@
 }
 
 /* 게시판 읽기 : 첨부파일, 링크, 이전글, 다음글 */
-#bo_v .tr {
-	border-top:1px solid #e7e5e9;
-	border-bottom:1px solid #e7e5e9;
-	margin-bottom:-1px;
+#bo_v_data > ul {
+	list-style:none;
+	padding:0;
+	margin:0;
 }
-#bo_v .td {
+#bo_v_data > ul > li:last-child {
+	border-bottom:1px solid #e7e5e9;
+}
+#bo_v_data .tr {
+	border-top:1px solid #e7e5e9;
+}
+#bo_v_data .td {
 	padding:10px 15px;
 }
-#bo_v .td-th {
+#bo_v_data .td-th {
 	width:45px; 
 	color:#888;
 	padding:10px 0;
 	text-align:center; 
 }
-#bo_v .td a {
+#bo_v_data .td a {
 	display:inline-block;
 	padding-left:20px;
 }
 
-#bo_v .td-first {
+#bo_v_data .td-first {
 	margin-right:5px;
 	position:relative;
 	z-index:1;
@@ -303,7 +309,7 @@
 /* 게시판 댓글 : 목록 */
 #bo_vc_empty {
 	border-top:1px solid #ddd; 
-	padding:15px;
+	padding:30px 15px;
 	text-align:center;
 }
 .cmt-btn {
@@ -311,9 +317,9 @@
 	text-align:left;
 	border:0;
 	background:#fff;
-	padding:10px 15px;
+	padding:15px 15px 5px;
 	margin:0;
-	font-size:22px;
+	font-size:20px;
 	font-family:tahoma;
 	letter-spacing:-1;
 }

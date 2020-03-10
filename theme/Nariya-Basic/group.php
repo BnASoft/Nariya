@@ -59,11 +59,11 @@ for ($i=0; $row=sql_fetch_array($result); $i++) { ?>
 				<?php echo get_text($row['bo_subject']) ?>
 			</a>
 		</h3>
-		<hr class="hr"/>
+		<hr class="hr line-<?php echo NT_COLOR ?>"/>
 
 		<?php echo na_widget('basic-wr-list', 'gr-'.$row['bo_table'], 'bo_list='.$row['bo_table'].' cache=5'); ?>
 
-		<div class="h30"></div>
+		<div class="h20"></div>
 
 	</div>
 <?php } ?>

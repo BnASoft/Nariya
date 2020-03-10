@@ -46,8 +46,8 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 					</div>
 					<div class="col-sm-6 col-xs-12 col-15">
 						<div class="h10 visible-xs"></div>
+						<label for="stx" class="sound_only">검색어</label>
 						<div class="input-group">
-							<label for="stx" class="sound_only">검색어</label>
 							<input type="text" id="bo_stx" name="stx" value="<?php echo stripslashes($stx) ?>" required class="form-control" placeholder="검색어를 입력해 주세요.">
 							<div class="input-group-btn">
 								<button type="submit" class="btn btn-<?php echo $bo_color ?>" title="검색하기">

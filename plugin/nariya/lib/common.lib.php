@@ -723,7 +723,7 @@ function na_sum_xp($mb) {
 }
 
 // 경험치 부여
-function na_insert_xp($mb_id, $point, $content='', $rel_table='', $rel_id='', $rel_action='') {
+function na_insert_xp($mb_id, $point, $content='', $rel_table='', $rel_id='', $rel_action='', $repeat=0) {
     global $config;
     global $g5;
     global $is_admin;
@@ -741,7 +741,7 @@ function na_insert_xp($mb_id, $point, $content='', $rel_table='', $rel_id='', $r
     if (!$mb['mb_id']) { return 0; }
 
     // 이미 등록된 내역이라면 건너뜀
-    if ($rel_table || $rel_id || $rel_action) {
+    if (!$repeat && ($rel_table || $rel_id || $rel_action)) {
         $row = sql_fetch(" select count(*) as cnt from {$g5['na_xp']}
                   where mb_id = '$mb_id'
                     and xp_rel_table = '$rel_table'

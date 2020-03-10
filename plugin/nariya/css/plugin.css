@@ -685,6 +685,7 @@ img.light-circle {
 	color:#333;
 }
 .na-category #bo_cate_on,
+.na-category .active,
 .na-category .sch_on {
 	z-index:2;
 	background:#fff;
@@ -693,6 +694,7 @@ img.light-circle {
 	border-bottom:1px solid transparent;
 }
 .na-category #bo_cate_on:after,
+.na-category .active:after,
 .na-category .sch_on:after {
 	position:absolute;
 	left:0;

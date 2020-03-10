@@ -5,8 +5,8 @@ if (!defined('_GNUBOARD_')) exit; //개별 페이지 접근 불가
 //add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 
 // 이미지 영역 및 썸네일 크기 설정
-$wset['thumb_w'] = ($wset['thumb_w'] == "") ? 400 : (int)$wset['thumb_w'];
-$wset['thumb_h'] = ($wset['thumb_h'] == "") ? 225 : (int)$wset['thumb_h'];
+$wset['thumb_w'] = ($wset['thumb_w'] == "") ? 320 : (int)$wset['thumb_w'];
+$wset['thumb_h'] = ($wset['thumb_h'] == "") ? 180 : (int)$wset['thumb_h'];
 
 if($wset['thumb_w'] && $wset['thumb_h']) {
 	$height = ($wset['thumb_w'] / $wset['thumb_h']) * 100;

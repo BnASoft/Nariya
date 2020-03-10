@@ -81,22 +81,19 @@ body.bg-top {
 	background-repeat: no-repeat;
 	background-size:cover;
 	background-position: center top; 
+	background-attachment: fixed;
 }
 body.bg-center { 
 	background-repeat: no-repeat;
 	background-size:cover;
 	background-position: center center; 
+	background-attachment: fixed;
 }
 body.bg-bottom { 
 	background-repeat: no-repeat;
 	background-size:cover;
 	background-position: center bottom;
-}
-body.bg-fixed { 
-	background-repeat: no-repeat;
-	background-size:100%;
-	background-position: center top;
-	background-attachment:scroll; 
+	background-attachment: fixed;
 }
 body.bg-pattern { 
 	background-repeat: repeat;

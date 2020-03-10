@@ -153,13 +153,13 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<input name="wset[hlg]" value="<?php echo ($wset['hlg']) ? $wset['hlg'] : '25%'; ?>" class="form-control">
 					</td>
 					<td>
-						<input name="wset[hmd]" value="<?php echo ($wset['hmd']) ? $wset['hmd'] : '25%'; ?>" class="form-control">
+						<input name="wset[hmd]" value="<?php echo ($wset['hmd']) ? $wset['hmd'] : '30%'; ?>" class="form-control">
 					</td>
 					<td>
-						<input name="wset[hsm]" value="<?php echo ($wset['hsm']) ? $wset['hsm'] : '30%'; ?>" class="form-control">
+						<input name="wset[hsm]" value="<?php echo ($wset['hsm']) ? $wset['hsm'] : '35%'; ?>" class="form-control">
 					</td>
 					<td>
-						<input name="wset[hxs]" value="<?php echo ($wset['hxs']) ? $wset['hxs'] : '35%'; ?>" class="form-control">
+						<input name="wset[hxs]" value="<?php echo ($wset['hxs']) ? $wset['hxs'] : '40%'; ?>" class="form-control">
 					</td>
 					</tr>
 					</tbody>

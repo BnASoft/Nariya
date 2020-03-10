@@ -187,7 +187,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 					</div>
 					<div class="col-sm-3">
 						<button class="btn btn-<?php echo $bo_color; ?> btn-sm btn-block cursor" onclick="na_comment_new('viewcomment','<?php echo $comment_url ?>','<?php echo $total_count ?>');">
-								<span class="ko">새로운 댓글 확인</span>
+							새로운 댓글 확인
 						</button>
 					</div>
 				</div>

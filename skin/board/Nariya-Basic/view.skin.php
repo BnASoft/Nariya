@@ -251,26 +251,27 @@ $view_subject = get_text($view['wr_subject']);
 				</div>
 			</div>
 		<?php } ?>
+		<?php if($view['as_tag']) { // 태그 ?>
+			<p class="bo_v_tags">
+				<i class="fa fa-tags light" aria-hidden="true"></i>
+				<?php echo na_get_tag($view['as_tag']) ?>
+			</p>
+		<?php } ?>
+
+		<?php 
+			// 서명 애드온 : /plugin/nariya/skin/addon/sign-basic 폴더	
+			if ($is_signature && $signature) 
+				echo na_addon('sign-basic'); 
+		?>
+
 	</section>
 
-	<?php if($view['as_tag']) { // 태그 ?>
-		<p class="bo_v_tags">
-			<i class="fa fa-tags light" aria-hidden="true"></i>
-			<?php echo na_get_tag($view['as_tag']) ?>
-		</p>
-	<?php } ?>
-
-	<?php 
-		// 서명 애드온 : /plugin/nariya/skin/addon/sign-basic 폴더	
-		if ($is_signature && $signature) 
-			echo na_addon('sign-basic'); 
-	?>
-
-    <?php if(isset($view['link'][1]) && $view['link'][1]) { ?>
-    <!-- 관련링크 시작 { -->
-    <section id="bo_v_link" class="f-small">
-        <h3 class="sound_only">관련링크</h3>
-        <div class="tr">
+    <section id="bo_v_data" class="f-small">
+        <h3 class="sound_only">관련자료</h3>
+		<ul>
+		<?php if(isset($view['link'][1]) && $view['link'][1]) { ?>
+	    <!-- 관련링크 시작 { -->
+		<li class="tr">
 			<div class="td td-th">
 				링크
 			</div>
@@ -297,26 +298,23 @@ $view_subject = get_text($view['wr_subject']);
 				}
 				?>
 			</div>
-		</div>
-    </section>
-    <!-- } 관련링크 끝 -->
-    <?php } ?>
+		</li>
+	    <!-- } 관련링크 끝 -->
+		<?php } ?>
     
-    <?php
-    $cnt = 0;
-    if ($view['file']['count']) {
-        for ($i=0; $i<count($view['file']); $i++) {
-            if (isset($view['file'][$i]['source']) && $view['file'][$i]['source'] && !$view['file'][$i]['view'])
-                $cnt++;
-        }
-    }
-	?>
+		<?php
+		$cnt = 0;
+		if ($view['file']['count']) {
+			for ($i=0; $i<count($view['file']); $i++) {
+				if (isset($view['file'][$i]['source']) && $view['file'][$i]['source'] && !$view['file'][$i]['view'])
+					$cnt++;
+			}
+		}
+		?>
 
-    <?php if($cnt) { ?>
-    <!-- 첨부파일 시작 { -->
-    <section id="bo_v_file" class="f-small">
-        <h3 class="sound_only">첨부파일</h3>
-        <div class="tr">
+		<?php if($cnt) { ?>
+		<!-- 첨부파일 시작 { -->
+		<li class="tr">
 			<div class="td td-th">
 				첨부
 			</div>
@@ -326,7 +324,7 @@ $view_subject = get_text($view['wr_subject']);
 				for ($i=0; $i<count($view['file']); $i++) {
 					if (isset($view['file'][$i]['source']) && $view['file'][$i]['source'] && !$view['file'][$i]['view']) {
 				?>
-		        <p>
+				<p>
 					<a href="<?php echo $view['file'][$i]['href'] ?>" class="view_file_download" title="<?php echo $view['file'][$i]['content'] ?>">
 						<i class="fa fa-download td-first light" aria-hidden="true"></i>
 						<?php echo $view['file'][$i]['source'] ?>
@@ -348,52 +346,53 @@ $view_subject = get_text($view['wr_subject']);
 				}
 				?>
 			</div>
-		</div>
-    </section>
-    <!-- } 첨부파일 끝 -->
-    <?php } ?>
+		</li>
+		<!-- } 첨부파일 끝 -->
+		<?php } ?>
 
-	<?php if ($prev_href) { ?>
-    <!-- 이전글 시작 { -->
-	<div class="tr f-small">
-		<div class="td td-th">
-			이전
-		</div>
-		<div class="td">
-			<a href="<?php echo $prev_href ?>">
-				<i class="fa fa-chevron-up td-first light" aria-hidden="true"></i>
-				<?php echo $prev_wr_subject;?>
-				<span class="light">
-					-
-					<span class="sound_only">작성일</span>
-					<?php echo date("Y.m.d H:i", strtotime($prev_wr_date)) ?>
-				</span>
-			</a>
-		</div>
-	</div>
-    <!-- } 이전글 끝 -->
-	<?php } ?>		
+		<?php if ($prev_href) { ?>
+		<!-- 이전글 시작 { -->
+		<li class="tr">
+			<div class="td td-th">
+				이전
+			</div>
+			<div class="td">
+				<a href="<?php echo $prev_href ?>">
+					<i class="fa fa-chevron-up td-first light" aria-hidden="true"></i>
+					<?php echo $prev_wr_subject;?>
+					<span class="light">
+						-
+						<span class="sound_only">작성일</span>
+						<?php echo date("Y.m.d H:i", strtotime($prev_wr_date)) ?>
+					</span>
+				</a>
+			</div>
+		</li>
+		<!-- } 이전글 끝 -->
+		<?php } ?>		
 
-	<?php if ($next_href) { ?>
-    <!-- 다음글 시작 { -->
-	<div class="tr f-small">
-		<div class="td td-th">
-			다음
-		</div>
-		<div class="td">
-			<a href="<?php echo $next_href ?>">
-				<i class="fa fa-chevron-down td-first light" aria-hidden="true"></i>
-				<?php echo $next_wr_subject;?>
-				<span class="light">
-					-
-					<span class="sound_only">작성일</span>
-					<?php echo date("Y.m.d H:i", strtotime($next_wr_date)) ?>
-				</span>
-			</a>
-		</div>
-	</div>
-    <!-- } 다음글 끝 -->
-	<?php } ?>		
+		<?php if ($next_href) { ?>
+		<!-- 다음글 시작 { -->
+		<li class="tr">
+			<div class="td td-th">
+				다음
+			</div>
+			<div class="td">
+				<a href="<?php echo $next_href ?>">
+					<i class="fa fa-chevron-down td-first light" aria-hidden="true"></i>
+					<?php echo $next_wr_subject;?>
+					<span class="light">
+						-
+						<span class="sound_only">작성일</span>
+						<?php echo date("Y.m.d H:i", strtotime($next_wr_date)) ?>
+					</span>
+				</a>
+			</div>
+		</li>
+		<!-- } 다음글 끝 -->
+		<?php } ?>		
+		</ul>
+	</section>
 
     <?php
     // 코멘트 입출력

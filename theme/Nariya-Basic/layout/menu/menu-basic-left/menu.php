@@ -73,10 +73,12 @@ $is_col_all = 6;
 	<nav id="nt_menu">
 		<div class="nt-container">
 			<div class="me-wrap">
-				<div class="me-cell me-head me-li<?php echo ($is_index) ? ' on' : ''; ?>">
-					<a href="javascript:;" data-toggle="collapse" data-target="#menu_all" class="me-a" title="전체메뉴">
-						<i class="fa fa-bars" aria-hidden="true"></i>
-					</a>
+				<div class="me-cell me-head">
+					<div class="me-li<?php echo ($is_index) ? ' on' : ''; ?>">
+						<a href="javascript:;" data-toggle="collapse" data-target="#menu_all" class="me-a" title="전체메뉴">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</a>
+					</div>
 				</div>
 				<div class="me-cell me-list">
 					<ul class="me-ul nav-slide">
@@ -155,10 +157,12 @@ $is_col_all = 6;
 					<?php } ?>
 					</ul>							
 				</div>
-				<div class="me-cell me-tail me-li">
-					<a href="javascript:;" onclick="sidebar_open('sidebar-menu'); return false;" class="me-a" title="마이메뉴">
-						<i class="fa fa-toggle-on" aria-hidden="true"></i>
-					</a>
+				<div class="me-cell me-tail">
+					<div class="me-li<?php echo ($is_index) ? ' on' : ''; ?>">
+						<a href="javascript:;" onclick="sidebar_open('sidebar-menu'); return false;" class="me-a" title="마이메뉴">
+							<i class="fa fa-toggle-on" aria-hidden="true"></i>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

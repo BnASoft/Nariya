@@ -80,13 +80,13 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 <!-- 위젯 시작 -->
 <h3 class="h3 en">
-	<a href="<?php echo get_pretty_url('notice'); ?>">
+	<a href="<?php echo get_pretty_url('video'); ?>">
 		<span class="pull-right lightgray more f-small">+</span>
 		공지글
 	</a>
 </h3>
 <hr class="hr line-<?php echo NT_COLOR ?>"/>
-<?php echo na_widget('basic-wr-list', 'notice'); ?>
+<?php echo na_widget('basic-wr-list', 'notice', 'bo_list=video ca_list=게임'); ?>
 <div class="h20"></div>
 <!-- 위젯 끝-->
 
@@ -98,7 +98,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 	</a>
 </h3>
 <hr class="hr line-<?php echo NT_COLOR ?>"/>
-<?php echo na_widget('basic-wr-list', 'new-wr'); ?>
+<?php echo na_widget('basic-wr-list', 'new-wr', 'bo_list=video ca_list=게임'); ?>
 <div class="h20"></div>
 <!-- 위젯 끝-->
 
@@ -110,7 +110,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 	</a>
 </h3>
 <hr class="hr line-<?php echo NT_COLOR ?>"/>
-<?php echo na_widget('basic-wr-comment-list', 'new-co'); ?>
+<?php echo na_widget('basic-wr-comment-list', 'new-co', 'bo_list=video ca_list=게임'); ?>
 <div class="h20"></div>
 <!-- 위젯 끝-->
 

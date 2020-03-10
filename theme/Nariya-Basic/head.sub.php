@@ -44,7 +44,7 @@ if(!G5_IS_MOBILE && $tset['no_res']) {
 
 // 배경옵션
 $is_body_bg = false;
-if($tset['layout'] && $tset['bg']) {
+if(($tset['page_sub'] || $tset['layout']) && $tset['bg']) {
 	$is_body_bg = true;
 	$body_class .= ' bg-'.$tset['bg'];
 }

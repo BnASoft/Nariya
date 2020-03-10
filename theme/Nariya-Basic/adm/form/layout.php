@@ -217,10 +217,9 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<select name="pc[bg]" class="form-control">
 							<option value="">선택해 주세요</option>
 							<option value="0"<?php echo get_selected('0', $pc['bg']) ?>>사용안함</option>
-							<option value="center"<?php echo get_selected('center', $pc['bg']) ?>>중앙맞춤</option>
-							<option value="top"<?php echo get_selected('top', $pc['bg']) ?>>상단맞춤</option>
-							<option value="bottom"<?php echo get_selected('bottom', $pc['bg']) ?>>하단맞춤</option>
-							<option value="fixed"<?php echo get_selected('fixed', $pc['bg']) ?>>상단고정</option>
+							<option value="center"<?php echo get_selected('center', $pc['bg']) ?>>중앙고정</option>
+							<option value="top"<?php echo get_selected('top', $pc['bg']) ?>>상단고정</option>
+							<option value="bottom"<?php echo get_selected('bottom', $pc['bg']) ?>>하단고정</option>
 							<option value="pattern"<?php echo get_selected('pattern', $pc['bg']) ?>>패턴배경</option>
 						</select>
 					</td>
@@ -228,10 +227,9 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<select name="mo[bg]" class="form-control">
 							<option value="">선택해 주세요</option>
 							<option value="0"<?php echo get_selected('', $mo['bg']) ?>>사용안함</option>
-							<option value="center"<?php echo get_selected('center', $mo['bg']) ?>>중앙맞춤</option>
-							<option value="top"<?php echo get_selected('top', $mo['bg']) ?>>상단맞춤</option>
-							<option value="bottom"<?php echo get_selected('bottom', $mo['bg']) ?>>하단맞춤</option>
-							<option value="fixed"<?php echo get_selected('fixed', $mo['bg']) ?>>상단고정</option>
+							<option value="center"<?php echo get_selected('center', $mo['bg']) ?>>중앙고정</option>
+							<option value="top"<?php echo get_selected('top', $mo['bg']) ?>>상단고정</option>
+							<option value="bottom"<?php echo get_selected('bottom', $mo['bg']) ?>>하단고정</option>
 							<option value="pattern"<?php echo get_selected('pattern', $mo['bg']) ?>>패턴배경</option>
 						</select>
 					</td>

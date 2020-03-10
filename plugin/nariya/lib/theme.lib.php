@@ -17,15 +17,16 @@ function na_pid($link='') {
 	$is_pid = false;
 	if(strpos($link, G5_BBS_URL) !== false) {
 		if($bo_table && ($file == 'board' || $file == 'write')) {
-			$mid[] = G5_BBS_DIR.'-board-'.$bo_table;
+			$me_id = G5_BBS_DIR.'-board-'.$bo_table;			
+			$mid[] = $me_id;
 			if(IS_DEMO && $demo) {
-				$mid[] = G5_BBS_DIR.'-board-'.$bo_table.'-'.$demo;
+				$mid[] = $me_id.'-'.$demo;
 			}
 			if($sca) {
-				$mid[] = G5_BBS_DIR.'-board-'.$bo_table.'-'.$sca;
+				$mid[] = $me_id.'-'.$sca;
 			}
 			if($wr_id) {
-				$mid[] = G5_BBS_DIR.'-board-'.$bo_table.'-'.$wr_id;
+				$mid[] = $me_id.'-'.$wr_id;
 				$href = get_pretty_url($bo_table, $wr_id);
 			} else {
 				$href = get_pretty_url($bo_table, '', $qstr);
@@ -43,16 +44,18 @@ function na_pid($link='') {
 	} else if(IS_YC) {
 		if(strpos($link, G5_SHOP_URL) !== false) {
 			if($ca_id && ($file == 'list' || $file == 'item')) {
-				$mid[] = G5_SHOP_DIR.'-list-'.$ca_id;
+				$me_id = G5_SHOP_DIR.'-list-'.$ca_id;
+				$mid[] = $me_id;
 				if($it_id) {
-					$mid[] = G5_SHOP_DIR.'-item-'.$it_id;
+					$me_it = G5_SHOP_DIR.'-item-'.$it_id;
+					$mid[] = $me_it;
 					if(IS_DEMO && $demo) {
-						$mid[] = G5_SHOP_DIR.'-item-'.$it_id.'-'.$demo;
+						$mid[] = $me_it.'-'.$demo;
 					}
 					$href = shop_item_url($it_id);
 				} else {
 					if(IS_DEMO && $demo) {
-						$mid[] = G5_SHOP_DIR.'-list-'.$ca_id.'-'.$demo;
+						$mid[] = $me_id.'-'.$demo;
 					}
 					$href = add_pretty_shop_url(shop_category_url($ca_id), 'shop', $qstr);
 				}
@@ -75,7 +78,11 @@ function na_pid($link='') {
 			$pdir = substr($pdir, 0, -1); 
 		}
 		$pdir = ($pdir) ? $pdir : 'root';
-		$mid[] = $pdir.'-page-'.$file;
+		$me_id = $pdir.'-page-'.$file;
+		$mid[] = $me_id;
+		if(IS_DEMO && $demo) {
+			$mid[] = $me_id.'-'.$demo;
+		}
 	}
 
 	if(!$href) {
@@ -125,6 +132,14 @@ function na_theme($id, $pid) {
 		$pdata = na_file_var_load(G5_THEME_PATH.'/storage/page/page-'.$pid.'-'.$device.'.php');
 		if(!empty($pdata))
 			$data = array_merge($data, $pdata);
+	}
+
+	// 데모용
+	if(IS_DEMO) {
+		global $dset;
+
+		if(!empty($dset))
+			$data = array_merge($data, $dset);
 	}
 
 	return $data;
@@ -193,14 +208,13 @@ function na_menu_item($it) {
 		$is_pid = false;
 		if(strpos($it['href'], G5_BBS_URL) !== false) {
 			if(isset($query['bo_table']) && $query['bo_table'] && ($file == 'board' || $file == 'write')) {
+				$me['id'] = G5_BBS_DIR.'-board-'.$query['bo_table'];
 				if(isset($query['wr_id']) && $query['wr_id']) {
-					$me['id'] = G5_BBS_DIR.'-board-'.$query['bo_table'].'-'.$query['wr_id'];
+					$me['id'] .= '-'.$query['wr_id'];
 				} else if(isset($query['sca']) && $query['sca']) {
-					$me['id'] = G5_BBS_DIR.'-board-'.$query['bo_table'].'-'.$query['sca'];
+					$me['id'] .= '-'.$query['sca'];
 				} else if(isset($query['demo']) && $query['demo']) {
-					$me['id'] = G5_BBS_DIR.'-board-'.$query['bo_table'].'-'.$query['demo'];
-				} else {
-					$me['id'] = G5_BBS_DIR.'-board-'.$query['bo_table'];
+					$me['id'] .= '-'.$query['demo'];
 				}
 				$me['bo_table'] = $query['bo_table'];
 				$me['wr_id'] = $query['wr_id'];
@@ -229,14 +243,14 @@ function na_menu_item($it) {
 				} else if(isset($query['it_id']) && $query['it_id'] && $file == 'item') {
 					$me['id'] = G5_SHOP_DIR.'-item-'.$query['it_id'];
 					if(isset($query['demo']) && $query['demo']) {
-						$me['id'] = G5_SHOP_DIR.'-item-'.$query['it_id'].'-'.$query['demo'];
+						$me['id'] .= '-'.$query['demo'];
 					}
 					$me['it_id'] = $query['it_id'];
 					$me['href'] = shop_short_url_clean($it['href']);
 				} else if(isset($query['ca_id']) && $query['ca_id'] && $file == 'list') {
 					$me['id'] = $id.'-list-'.$query['ca_id'];
 					if(isset($query['demo']) && $query['demo']) {
-						$me['id'] = G5_SHOP_DIR.'-list-'.$query['ca_id'].'-'.$query['demo'];
+						$me['id'] .= '-'.$query['demo'];
 					}
 					$me['ca_id'] = $query['ca_id'];
 					$me['href'] = shop_short_url_clean($it['href']);
@@ -257,6 +271,9 @@ function na_menu_item($it) {
 			}
 			$pdir = ($pdir) ? $pdir : 'root';
 			$me['id'] = $pdir.'-page-'.$file;
+			if(isset($query['demo']) && $query['demo']) {
+				$me['id'] .= '-'.$query['demo'];
+			}
 			$me['href'] = $it['href'];
 		}
 
