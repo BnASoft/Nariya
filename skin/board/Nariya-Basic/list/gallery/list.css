@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+/* Width */
+#bo_list .wr-chk { 
+	width:40px; 
+}
+#bo_list .wr-num {
+	width:60px; 
+}
+#bo_list .wr-name { 
+	width:120px; 
+}
+#bo_list .wr-date { 
+	width:90px; 
+}
+#bo_list .wr-none { 
+	padding:50px 0px; 
+	text-align:center; 
+	color:#888; 
+}
+
+/* List */
+.bo_list { 
+	list-style:none;
+	padding:0;
+	margin:0 0 20px;
+	border-top-width:4px;
+	border-top-style:solid; 
+}
+.bo_list .tr {
+	border-bottom:1px solid #ddd; 
+}
+.bo_list .wr-cont .tr {
+	border-bottom:0; 
+}
+.bo_list .td {
+	text-align:center;
+	padding:0;
+}
+.bo_list .wr-cont .td {
+	padding:10px 0;
+}
+.bo_list .tr:hover { 
+	color:#000; 
+	background-color:#F8F8F8; 
+}
+.bo_list .wr-cont .wr-subject { 
+	text-align:left;
+	padding-left:10px;
+	padding-right:10px;
+}
+.bo_list .wr-cont .wr-name { 
+	text-align:left;
+	padding-left:10px;
+	padding-right:10px;
+}
+.bo_list .fa.f-icon { 
+	display:none;
+}
+
+/* gallery */
+#bo_gallery {
+	margin-bottom:15px;
+}
+#bo_gallery > ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+	margin-right:-20px;
+	margin-bottom:-20px;
+}
+#bo_gallery > ul > li {
+	float:left; 
+	padding:0;
+	margin:0;
+	padding-right:20px;
+	padding-bottom:20px;
+}
+#bo_gallery .wr-thumb {
+	transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	-moz-transition: all .25s ease-in-out;
+	-webkit-transition: all .25s ease-in-out;
+}
+#bo_gallery .wr-thumb:hover {
+	transform:scale(1.3); /*  default */
+	-webkit-transform:scale(1.3); /*  Å©·Ò */
+	-moz-transform:scale(1.3); /* FireFox */
+	-o-transform:scale(1.3); /* Opera */
+}
+#bo_gallery .chk-box {
+	position:absolute;
+	bottom:5px;
+	right:10px;
+	z-index:1;
+}
+
+@media all and (max-width:768px) {
+	.responsive .bo_list { 
+		margin:0 0 15px;
+	}
+	.responsive .bo_list .fa.f-icon { 
+		display:inline-block;
+	}
+	.responsive .bo_list .wr-cont .tr { 
+		display:block;
+	}
+	.responsive .bo_list .wr-cont { 
+		padding:10px;
+	}
+	.responsive .bo_list .wr-cont .td { 
+		float:left; 
+		display:inline-block; 
+		width:auto !important; 
+		height:auto !important; 
+		text-align:left !important; 
+		padding:5px 15px 0 0 !important;
+	}
+	.responsive .bo_list .wr-cont .td.wr-subject { 
+		display:block; 
+		width:100% !important;
+	}
+	.responsive .bo_list .wr-cont .td.wr-name { 
+		float:right; 
+		padding-right:0 !important;
+	}
+	.responsive #bo_gallery > ul {
+		margin-right:-10px;
+		margin-bottom:-15px;
+	}
+	.responsive #bo_gallery > ul > li {
+		padding-right:10px;
+		padding-bottom:15px;
+	}
+}

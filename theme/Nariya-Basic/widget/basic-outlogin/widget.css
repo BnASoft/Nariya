@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.basic-outlogin label { 
+	font-weight: normal; 
+	cursor: pointer; 
+}
+.basic-outlogin .profile { 
+	margin-bottom:10px; 
+}
+.basic-outlogin .profile .photo { 
+	margin-right:12px; 
+}
+.basic-outlogin .profile .photo img { 
+	width:50px; 
+	height:50px; 
+	border-radius: 50%; 
+	border:0; 
+}
+.basic-outlogin .profile .sv_member { 
+	font-size:16px; 
+	line-height:24px; 
+	padding:0; 
+	margin:0 0 6px; 
+	letter-spacing:-1px;
+	display:inline-block;
+}
+.basic-outlogin .profile .mb-name .profile_img {
+	display:none;
+}
+.basic-outlogin .login-line { 
+	border-top:1px solid #eee; 
+	margin-bottom:8px; 
+	padding-top:8px; 
+}
+.basic-outlogin .form-group { 
+	margin-bottom:10px; 
+}

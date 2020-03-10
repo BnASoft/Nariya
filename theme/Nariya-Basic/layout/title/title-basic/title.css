@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/********************************************************
+■ Page Title
+********************************************************/
+#nt_title { 
+	height:80px; 
+	position:relative; 
+	color:#000; 
+	background-color: #fafafa; 
+	border-bottom:1px solid #dfdfdf; 
+}
+#nt_title .nt-container { 
+	height:100%; 
+	position:relative; 
+}
+#nt_title .page-title { 
+	font-size:24px; 
+	position:absolute; 
+	left:20px; 
+	bottom:10px; 
+	z-index:1; 
+	letter-spacing:-1px; 
+}
+#nt_title .page-desc { 
+	color:#888; 
+	position:absolute; 
+	right:20px; 
+	bottom:10px; 
+	z-index:1; 
+}
+#nt_title .page-desc a { 
+	color:#888; 
+}
+@media all and (max-width:767px) {
+	.responsive #nt_title { 
+		height:50px; 
+	}
+	.responsive #nt_title .page-title { 
+		font-size:18px; 
+		left:15px; 
+		bottom:10px; 
+	}
+}

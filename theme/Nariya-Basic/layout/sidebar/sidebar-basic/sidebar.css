@@ -1,0 +1,230 @@
+@charset "utf-8";
+
+/* sidebar Box */
+#nt_sidebar { 
+	top: 0; 
+	width: 280px; 
+	height: 100%; 
+	position: fixed; 
+	z-index:99998; 
+	background: #fafafa;
+	box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 
+	-webkit-box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 
+	-moz-box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 	
+}
+#nt_sidebar .sidebar-content {
+	height: 90vh;
+	overflow-x:hidden; 
+	-webkit-overflow-scrolling:touch; 
+}
+@media (max-width: 767px) {
+	.responsive #nt_sidebar .sidebar-content {
+		height: 85vh;
+	}
+}
+@media (max-width: 480px) {
+	.responsive #nt_sidebar .sidebar-content {
+		height: 80vh;
+	}
+}
+
+/* Top Line */
+#nt_sidebar .sidebar-head { 
+	font-size:16px;
+	line-height:45px;
+	height:45px;
+	padding:0 10px;
+	font-weight:bold;
+	text-align:center;
+	box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
+	-webkit-box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
+	-moz-box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
+}
+#nt_sidebar .sidebar-head a { 
+	color:#fff !important;
+}
+
+/* Member */
+#nt_sidebar .sidebar-member { 
+	padding:10px 15px;
+	border-bottom:1px solid #ddd;
+}
+#nt_sidebar .profile { 
+	margin-bottom:10px; 
+}
+#nt_sidebar .profile .photo { 
+	margin-right:12px; 
+}
+#nt_sidebar .profile .photo img { 
+	width:50px; 
+	height:50px; 
+	border-radius: 50%; 
+	border:0; 
+}
+#nt_sidebar .profile .sv_member { 
+	font-size:16px; 
+	line-height:24px; 
+	padding:0; 
+	margin:0 0 6px; 
+	letter-spacing:-1px;
+	display:inline-block;
+}
+#nt_sidebar .profile .mb-name .profile_img {
+	display:none;
+}
+#nt_sidebar .login-line { 
+	border-top:1px solid #eee; 
+	margin-bottom:0; 
+	padding-top:8px; 
+}
+
+/* Icon */
+#nt_sidebar .sidebar-icon { 
+	padding:15px 5px 10px;
+	border-bottom:1px solid #ddd;
+	margin-bottom:10px;
+}
+#nt_sidebar .sidebar-icon-tbl { 
+	display:table; 
+	width:100%; 
+	table-layout:fixed;
+}
+#nt_sidebar .sidebar-icon-cell { 
+	display:table-cell;	
+	text-align:center; 
+	vertical-align:top; 
+	padding:0; 
+}
+#nt_sidebar .sidebar-icon-cell span { 
+	display:block; 
+	letter-spacing:-1px; 
+	padding-top:6px; 
+}
+
+/* Search */
+#nt_sidebar .sidebar-search { 
+	padding:5px 15px 15px;
+}
+
+/* Menu */
+#nt_sidebar_menu { 
+	border-top:1px solid #ddd;
+}
+#nt_sidebar_menu ul { 
+	list-style:none; 
+	padding:0; 
+	margin:0; 
+}
+#nt_sidebar_menu ul.off {
+	display:none;
+}
+#nt_sidebar_menu li { 
+	padding:0; 
+	margin:0; 
+	position:relative; 
+}
+#nt_sidebar_menu a { 
+	display:block; 
+	padding-left:34px; 
+	line-height:38px; 
+	height:38px; 
+	border-bottom:1px solid #eee;
+	overflow:hidden;
+}
+.is-mobile #nt_sidebar_menu a {
+	line-height:42px; 
+	height:42px; 
+}
+#nt_sidebar_menu .tree-toggle { 
+	position:absolute; 
+	z-index:1; 
+	left:0; 
+	top:0; 
+	width:34px; 
+	height:38px; 
+	line-height:38px; 
+	text-align:center; 
+	cursor:pointer; 
+	color:#aaa;
+}
+.is-mobile #nt_sidebar_menu .tree-toggle {
+	height:42px; 
+	line-height:42px; 
+}
+#nt_sidebar_menu .me-ul { 
+	background:#fff; 
+}
+#nt_sidebar_menu .me-ul1 { 
+	background:#fafafa; 
+}
+#nt_sidebar_menu .me-ul2 { 
+	background:#fff; 
+}
+
+#nt_sidebar_menu .me-li.active .me-a,
+#nt_sidebar_menu .me-li1.active .me-a1,
+#nt_sidebar_menu .me-li2.active .me-a2 {
+	color:crimson;
+	font-weight:bold;
+}
+#nt_sidebar_menu .me-line1 .me-a1 { 
+	background:#fff;
+	font-weight:bold;
+}
+#nt_sidebar_menu .me-line2 .me-a2 { 
+	background:#fafafa;
+	font-weight:bold;
+}
+
+/* Stats */
+.sidebar-stats ul {
+	position:relative;
+	padding:15px; 
+	margin:0;
+	margin-top:-1px;
+	list-style:none;
+	border-top:1px solid #ddd;
+	z-index:1;
+}
+.sidebar-stats li:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+
+@media (min-width: 481px) {
+	#nt_sidebar { 
+		right: -320px; 
+		margin-left:40px; 
+	}
+}
+@media (max-width: 480px) {
+	#nt_sidebar { 
+		left: -320px; 
+		margin-right:40px; 
+	}
+}
+
+@media (min-width: 768px) {
+	#nt_sidebar { 
+		padding-bottom:0; 
+	}
+}
+@media (max-width: 767px) {
+	#nt_sidebar { 
+		padding-bottom:0; 
+	}
+}
+
+/* Mask */
+#nt_sidebar_mask { 
+	display:none; 
+	position:fixed; 
+	z-index:99997; 
+	background:rgba(0,0,0,0.75); 
+	left:0; 
+	top:0; 
+	width:100%; 
+	height:100%; 
+}

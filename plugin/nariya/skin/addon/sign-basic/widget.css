@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+/* 게시판 읽기 : 서명 */
+.bo_signature {
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+    max-height: 160px;
+    color: #555;
+    padding: 0 12px 10px;
+}
+.bo_signature_title {
+    display: inline-block;
+    color: #555;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 0;
+    margin: 0 0 10px;
+    border-bottom: 1px solid #aaa;
+	font-family:verdana;
+}
+.bo_signature_content pre {
+    white-space: pre-line;
+    word-break: break-all;
+	overflow: auto;
+	margin:0;
+	padding:0;
+	border:0;
+	background:#fff;
+}
+.bo_signature_expand {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 7px 12px;
+    background-color: #fff;
+}
+.bo_signature.expanded {
+    max-height: 100%;
+    padding: 8px 12px 34px;
+}
+.bo_signature.expanded .bo_signature_open {
+    display: none;
+}
+.bo_signature.expanded .bo_signature_close {
+    display: block;
+}
+.bo_signature .bo_signature_close {
+    display: none;
+}
+.bo_signature .bo_signature_open {
+    display: block;
+}

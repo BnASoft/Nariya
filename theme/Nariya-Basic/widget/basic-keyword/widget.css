@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/* 인기검색어 */
+.basic-keyword {
+	position:relative; 
+	margin-top:2px; 
+}
+.basic-keyword.popular_btn_show { 
+	padding-right:36px; 
+}
+.basic-keyword .popular_inner { 
+	height:20px;
+	overflow:hidden; 
+	padding-right:5px;
+}
+.basic-keyword ul {
+	list-style:none;
+	padding:0;
+	margin:0
+}
+.basic-keyword ul:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+.basic-keyword li {
+	float:left;
+	width:auto !important;
+	height:18px;
+	line-height:18px;
+	padding-right:15px;
+}
+.basic-keyword li a {
+	color:#555;
+}
+.basic-keyword li:first-child {
+	border-left:0;
+}
+.basic-keyword li a:hover {
+	color:orangered; 
+	text-decoration:none;
+}
+.basic-keyword .popular_inner .popular_btns{
+	display:none;
+}
+.basic-keyword .popular_btns .pp-next,
+.basic-keyword .popular_btns .pp-prev {
+	background:#fff;
+	position:absolute;
+	overflow:hidden;
+	top:55%;
+	width:18px;
+	height:18px;
+	font-size:12px;
+	line-height:18px;
+	text-align:center;
+	border:1px solid #ddd;
+	margin-top:-12px;
+	color:#888;
+}
+.basic-keyword .popular_btns .pp-next {
+	right:0;
+}
+.basic-keyword .popular_btns .pp-prev {
+	right:17px;
+}

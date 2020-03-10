@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+/********************************************************
+■ LNB
+********************************************************/
+#nt_lnb { }
+#nt_lnb ul { 
+	list-style: none; 
+	margin: 0; 
+	padding:10px 0 5px; 
+}
+#nt_lnb ul > li { 
+	float: left; 
+	padding: 0 15px; 
+}
+#nt_lnb ul > li::after { 
+	float: right; 
+	color:#ccc; 
+	content: "/"; 
+	margin-right:-17px;
+}
+#nt_lnb ul > li:last-child::after { 
+	content: ""; 
+	margin-right:0; 
+}
+#nt_lnb ul > li > a { 
+	float:left; 
+}
+@media all and (max-width:991px) {
+	.responsive #nt_lnb .nt-container { 
+		display:none; 
+		visibility:visible; 
+	}
+}

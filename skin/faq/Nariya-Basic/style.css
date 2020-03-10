@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+#faq_search form{
+	max-width:320px; 
+	margin:0 auto;
+}
+#faq_list_total {
+	padding:8px 0 4px;
+}
+#faq_btn_top {
+	margin:6px 0 4px;
+}
+#faq_btn_top:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+#faq_wrap { }
+#faq_wrap img { 
+	max-width:100%;
+}
+#faq_wrap ol {
+	margin:0;
+	padding:0;
+	list-style:none;
+	border-top:4px solid #e7e5e9;
+}
+#faq_wrap li {
+	background:#fff;
+	position:relative;
+}
+#faq_wrap .tr { 
+	border-bottom:1px solid #e8e5e9;
+}
+#faq_wrap .tr.on { 
+	font-weight:bold;
+}
+#faq_wrap .td { 
+	padding:10px 0; 
+	vertical-align:top;
+}
+#faq_wrap .faq-head,
+#faq_wrap .faq-tail {
+	width:30px;
+	text-align:center;
+	color:#888;
+}
+#faq_wrap .tr.on .faq-head .fa:before { 
+	color:#000;
+	content:"\f06a";
+}
+#faq_wrap .tr.on .faq-tail .fa:before { 
+	color:#000;
+	content:"\f077";
+}
+
+#faq_wrap .faq-content {
+	display:none;
+	padding:10px 30px;
+	border-bottom:1px solid #e8e5e9;
+	background:#fafafa;
+}
+
+#faq_wrap .empty_list {
+	border-top:1px solid #e8e5e9;
+	padding:50px 10px;
+	text-align:center;
+	color:#888;
+}

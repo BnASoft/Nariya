@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+body { 
+	margin:0; 
+	padding:55px 10px; 
+	background:#fff; 
+}
+
+.clip-head { 
+	position:fixed; 
+	z-index:10; 
+	left:0; 
+	top:0; 
+	width:100%; 
+	padding:10px 15px; 
+	font-size:16px;
+}
+.clip-head .close { 
+	font-size:28px !important;
+}
+.clip-btn {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	z-index:1000;
+}
+.clip-btn .btn {
+	border-radius:0 !important;
+}
+.clip-box { 
+	text-align:center; 
+	overflow:hidden;
+	margin-right:-9px; 
+}
+.clip-img { 
+	width:48px; 
+	height:48px; 
+	margin:9px 9px 0px 0px; 
+	cursor:pointer; 
+	border:1px solid #ddd; 
+}

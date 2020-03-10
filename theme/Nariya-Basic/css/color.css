@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+/* 버튼색 */
+.btn.btn-navy {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(40, 40, 50);  
+	background-color: rgb(50, 60, 70); 
+}
+.btn.active.btn-navy, .btn.btn-navy:hover, .btn.btn-navy:focus, .btn.btn-navy:active { 
+	background-color: rgb(40, 40, 50); 
+}
+.btn.btn-red {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(213, 7, 15);  
+	background-color: rgb(233, 27, 35); 
+}
+.btn.active.btn-red, .btn.btn-red:hover, .btn.btn-red:focus, .btn.btn-red:active { 
+	background-color: rgb(213, 7, 15); 
+}
+.btn.btn-orangered {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(240, 0, 0);  
+	background-color: orangered; 
+}
+.btn.active.btn-orangered, .btn.btn-orangered:hover, .btn.btn-orangered:focus, .btn.btn-orangered:active { 
+	background-color: rgb(240, 0, 0); 
+}
+.btn.btn-blue {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(40, 130, 190);  
+	background-color: rgb(52, 152, 219); 
+}
+.btn.active.btn-blue, .btn.btn-blue:hover, .btn.btn-blue:focus, .btn.btn-blue:active { 
+	background-color: rgb(40, 130, 190); 
+}
+.btn.btn-skyblue {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(60, 180, 245);  
+	background-color: rgb(100, 195, 245); 
+}
+.btn.active.btn-skyblue, .btn.btn-skyblue:hover, .btn.btn-skyblue:focus, .btn.btn-skyblue:active { 
+	background-color: rgb(60, 180, 245); 
+}
+.btn.btn-lightblue {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid #2f409f;  
+	background-color: #3f51b5; 
+}
+.btn.active.btn-lightblue, .btn.btn-lightblue:hover, .btn.btn-lightblue:focus, .btn.btn-lightblue:active { 
+	background-color: #2f409f; 
+}
+.btn.btn-green {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(110, 180, 20);  
+	background-color: rgb(140, 195, 70); 
+}
+.btn.active.btn-green, .btn.btn-green:hover, .btn.btn-green:focus, .btn.btn-green:active { 
+	background-color: rgb(110, 180, 20); 
+}
+.btn.btn-violet {
+	color: #fff !important; border-image: none !important; background-image: none !important;
+	border: 1px solid rgb(65, 50, 100);  
+	background-color: rgb(85, 60, 125); 
+}
+.btn.active.btn-violet, .btn.btn-violet:hover, .btn.btn-violet:focus, .btn.btn-violet:active { 
+	background-color: rgb(65, 50, 100); 
+}
+
+/* 테두리색 */
+.border-navy, i.border-navy, img.border-navy { 
+	border-color: rgb(50, 60, 70); 
+}
+.border-red, i.border-red, img.border-red { 
+	border-color: rgb(233, 27, 35);
+}
+.border-orangered, i.border-orangered, img.border-orangered { 
+	border-color: orangered; 
+}
+.border-blue, i.border-blue, img.border-blue { 
+	border-color: rgb(52, 152, 219); 
+}
+.border-skyblue, i.border-skyblue, img.border-skyblue { 
+	border-color: rgb(100, 195, 245); 
+}
+.border-lightblue, i.border-lightblue, img.border-lightblue { 
+	border-color: #3f51b5; 
+}
+.border-green, i.border-green, img.border-green { 
+	border-color: rgb(140, 195, 70); 
+}
+.border-violet, i.border-violet, img.border-violet { 
+	border-color: rgb(85, 60, 125); 
+}
+
+/* 배경색 */
+.bg-navy, i.bg-navy, .badge.bg-navy { 
+	background-color: rgb(50, 60, 70); 
+	color: #fff; 
+}
+.bg-red, i.bg-red, .badge.bg-red { 
+	background-color: rgb(233, 27, 35);
+	color: #fff; 
+}
+.bg-orangered, i.bg-orangered, .badge.bg-orangered { 
+	background-color: orangered; 
+	color: #fff; 
+}
+.bg-blue, i.bg-blue, .badge.bg-blue { 
+	background-color: rgb(52, 152, 219); 
+	color: #fff; 
+}
+.bg-skyblue, i.bg-skyblue, .badge.bg-skyblue { 
+	background-color: rgb(100, 195, 245); 
+	color: #fff; 
+}
+.bg-lightblue, i.bg-lightblue, .badge.bg-lightblue { 
+	background-color: #3f51b5; 
+	color: #fff; 
+}
+.bg-green, i.bg-green, .badge.bg-green { 
+	background-color: rgb(140, 195, 70); 
+	color: #fff; 
+}
+.bg-violet, i.bg-violet, .badge.bg-violet { 
+	background-color: rgb(85, 60, 125); 
+	color: #fff; 
+}
+
+/* 글자색 및 아이콘색 */
+.navy, i.navy { 
+	color: rgb(50, 60, 70); 
+}
+.red, i.red { 
+	color: rgb(233, 27, 35);
+}
+.orangered, i.orangered { 
+	color: orangered; 
+}
+.blue, i.blue { 
+	color: rgb(52, 152, 219); 
+}
+.skyblue, i.skyblue { 
+	color: rgb(100, 195, 245); 
+}
+.lightblue, i.lightblue { 
+	color: #3f51b5; 
+}
+.green, i.green { 
+	color: rgb(140, 195, 70); 
+}
+.violet, i.violet { 
+	color: rgb(85, 60, 125); 
+}
+
+/* 라인색 */
+.line-navy::after { 
+	background: rgb(50, 60, 70);
+}
+.line-red::after { 
+	background: rgb(233, 27, 35);
+}
+.line-orangered::after { 
+	background: orangered;
+}
+.line-blue::after { 
+	background: rgb(52, 152, 219);
+}
+.line-skyblue::after { 
+	background: rgb(100, 195, 245);
+}
+.line-lightblue::after { 
+	background: #3f51b5;
+}
+.line-green::after { 
+	background: rgb(140, 195, 70);
+}
+.line-violet::after { 
+	background: rgb(85, 60, 125);
+}
+
+/* 페이징 */
+.na-page.pg-red .pagination .active a { 
+	background: rgb(233, 27, 35) !important; 
+	border-color: rgb(233, 27, 35) !important;
+}
+.na-page.pg-orangered .pagination .active a { 
+	background: orangered !important; 
+	border-color: orangered !important;
+}
+.na-page.pg-blue .pagination .active a { 
+	background: rgb(52, 152, 219) !important; 
+	border-color: rgb(52, 152, 219) !important;
+}
+.na-page.pg-skyblue .pagination .active a { 
+	background: rgb(100, 195, 245) !important; 
+	border-color: rgb(100, 195, 245) !important;
+}
+.na-page.pg-lightblue .pagination .active a { 
+	background: #3f51b5 !important; 
+	border-color: #3f51b5 !important;
+}
+.na-page.pg-green .pagination .active a { 
+	background: rgb(140, 195, 70) !important; 
+	border-color: rgb(140, 195, 70) !important;
+}
+.na-page.pg-violet .pagination .active a { 
+	background: rgb(85, 60, 125) !important; 
+	border-color: rgb(85, 60, 125) !important;
+}

@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+/********************************************************
+■ PC Header
+********************************************************/
+#header_pc { 
+	padding:0; 
+}
+#header_pc .nt-container { 
+	padding:15px; 
+	background: url('./header.jpg') no-repeat right bottom;
+}
+.boxed.wrapper #header_pc .nt-container { 
+	padding:15px 20px; 
+}
+#header_pc .header-logo { 
+	display:inline-block; 
+	vertical-align:top; 
+	padding-right:15px; 
+}
+#header_pc .header-search { 
+	display:inline-block; 
+	width:500px; 
+	vertical-align:middle; 
+}
+#header_pc .header-search form { 
+	padding:0; 
+	border:2px solid #333;
+}
+#header_pc .header-search input { 
+	font-size:16px !important;
+	background: #fff; 
+	border:0 !important; 
+	box-shadow:none !important; 
+	-webkit-box-shadow:none !important; 
+}
+#header_pc .header-search .form-control:focus { 
+	box-shadow:none !important; 
+	-webkit-box-shadow: none !important; 
+}
+#header_pc .header-search .btn { 
+	color: #333 !important; 
+	border:0; 
+	background: none !important; 
+	outline:none; 
+}
+#header_pc .header-keyword { 
+	padding-top:5px; 
+}
+@media all and (max-width:991px) {
+	.responsive #header_pc { display:none; }
+}

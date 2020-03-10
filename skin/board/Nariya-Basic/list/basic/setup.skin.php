@@ -1,0 +1,57 @@
+<?php
+if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
+
+// input의 name을 boset[배열키] 형태로 등록
+?>
+<div class="form-group">
+	<label class="col-sm-2 control-label">목록헤드</label>
+	<div class="col-sm-10">
+
+		<div class="table-responsive">
+			<table class="table table-bordered no-margin">
+			<tbody>
+			<tr class="active">
+				<th class="text-center col-xs-3">구분</th>
+				<th class="text-center col-xs-3">설정</th>
+				<th class="text-center">비고</th>
+			</tr>
+			<tr>
+				<th class="text-center">
+					헤드스킨
+				</th>
+				<td class="text-center">
+					<select name="boset[head_skin]" class="form-control">
+						<option value="">기본헤드</option>
+						<option value="">선택해 주세요</option>
+					<?php
+						$skinlist = na_file_list(NA_PLUGIN_PATH.'/skin/head', 'css');
+						for ($k=0; $k<count($skinlist); $k++) {
+							echo "<option value=\"".$skinlist[$k]."\"".get_selected($boset['head_skin'], $skinlist[$k]).">".$skinlist[$k]."</option>\n";
+						} 
+					?>
+					</select>
+				</td>
+				<td class="text-muted">
+					&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th class="text-center">
+					헤드컬러
+				</th>
+				<td class="text-center">
+					<select name="boset[head_color]" class="form-control">
+						<option value="">선택해 주세요</option>
+						<?php echo na_color_options($boset['head_color']);?>
+					</select>
+				</td>
+				<td class="text-muted">
+					헤드스킨이 "기본헤드"일 경우에만 적용됨
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>

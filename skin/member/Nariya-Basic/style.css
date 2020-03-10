@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+/* 타이틀 */
+.win-title { 
+	margin:0; 
+	padding:10px 15px; 
+	line-height:40px; 
+	font-size:18px;
+	text-align:left;
+}
+.win-title img { 
+	border-radius: 50%; 
+	width: 40px; 
+	height: 40px; 
+	display:inline-block;
+	margin-right:5px;
+}
+.win-title button { 
+	margin-top:5px;
+}
+.win-cont .list-group-item {
+	border-left:0;
+	border-right:0;
+}
+.win-del { 
+	font-size:14px;
+	color:#aaa;
+}
+.win-del:hover,
+.win-del:focus,
+.win-del:active { 
+	color:#000;
+}
+.empty_list {
+	padding:50px 15px;
+	color:#888;
+	text-align:center;
+}
+
+/* 회원약관 및 가입완료 */
+.register { 
+	padding:15px; 
+	max-width:880px; 
+	overflow:hidden; 
+	margin:5% auto; 
+}
+#reg_result.register { 
+	max-width:600px; 
+}
+.register.no-headsub { 
+	padding:0; margin:0 auto; 
+}
+.register-term { 
+	position: relative; 
+	height: 180px; 
+	margin:0; 
+	overflow: auto; 
+	border:1px solid #ddd; 
+	padding:8px; 
+}
+
+/* 회원가입 */
+#register_form { 
+	padding:15px; 
+	max-width:880px; 
+	overflow:hidden; 
+	margin:5% auto; 
+}
+#register_form.no-headsub { 
+	padding:0; 
+	margin:0 auto; 
+}
+.register-form .text-gap { 
+	margin-bottom:4px; 
+}
+.register-form .addr-line { 
+	margin-bottom:7px; 
+}
+
+/* 로그인, 회원비번확인 등 */
+.mbskin { 
+	padding:15px; 
+	max-width:480px; 
+	margin:5% auto; 
+}
+.mbskin.no-headsub { 
+	padding:0; 
+	margin:0 auto; 
+}
+#mb_login.mbskin { 
+	max-width:380px; 
+}
+
+/* 로그인 */
+.mbskin-cate {
+	border:1px solid #ddd; 
+	border-bottom:0; 
+}
+.mbskin-cate .login {
+	width:50%;
+	float:left;
+	padding:15px 0;
+	text-align:center; 
+	font-weight:bold; 
+}
+.mbskin-cate .join {
+	width:50%;
+	float:left;
+	padding:15px 0;
+	text-align:center;
+	background:#f7f7f7;
+	color:#6e6e6e;
+}
+.mbskin-cate:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+.mbskin-box { 
+	border:1px solid #ddd; 
+	border-top:0; 
+	padding:20px 20px 15px; 
+}
+
+/* 쪽지 */
+.memo_list .icon { 
+	width:60px; 
+}
+.memo_list .icon a { 
+	display:inline-block; 
+	text-align:center;
+	width:46px; 
+	height:46px; 
+	line-height:46px; 
+	margin:0 auto; 
+	color:#fff !important; 
+	border-radius:50%; 
+	font-size:24px;
+	font-family:dotum;
+}
+.memo_list .icon a.bg-readed { 
+	background:#ccc;
+}
+.memo_cont p {
+	padding-top:4px;
+}
+
+/* 프로필 */
+#profile .mb_name .sv_member { 
+	font-weight:bold; 
+	color:#fff; 
+}
+#profile .my_profile_img img {
+	border-radius:50%;
+}

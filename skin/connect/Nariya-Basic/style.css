@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+#connect_list { }
+#connect_list .num { 
+	width:60px; 
+	text-align:center; 
+}
+#connect_list > ul { 
+	list-style:none; 
+	padding:0; 
+	margin:0; 
+}
+#connect_list .tr { 
+	border-bottom:1px solid #e8e5e9; 
+}
+#connect_list .tr:hover { 
+	color:#000; 
+	background-color:#fafafa;
+}
+#connect_list .td { 
+	padding:10px; 
+}
