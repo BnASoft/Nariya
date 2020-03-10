@@ -210,7 +210,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			</div>
 		</li>
 	<?php } ?>
-	<?php if(IS_NA_XP) { // 멤버쉽 플러그인 ?>
+	<?php if(IS_NA_XP) { // 멤버십 플러그인 ?>
 		<li class="list-group-item">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">경험치설정</label>

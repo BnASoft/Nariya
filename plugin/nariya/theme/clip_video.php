@@ -14,7 +14,8 @@ include_once(G5_THEME_PATH.'/head.sub.php');
 <div style="height:45px;"></div>
 <style>
 body { margin:0; padding:; background:#fff; }
-.clip-head { position:fixed; z-index:1; left:0; top:0; width:100%; padding:10px; font-size:16px; }
+.clip-head { position:fixed; z-index:10; left:0; top:0; width:100%; padding:10px 15px; font-size:16px; }
+.clip-head .close { font-size:28px !important; }
 .list-group-item { border-left:0 !important; border-right:0 !important; }
 </style>
 
@@ -43,7 +44,7 @@ body { margin:0; padding:; background:#fff; }
 <?php } ?>
 
 <div class="clip-head bg-na-navy en">
-	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span></button>
+	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<b>
 		<i class="fa fa-youtube-play" aria-hidden="true"></i>
 		SHARE VIDEO

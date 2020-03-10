@@ -20,6 +20,14 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			<tbody>
 			<tr>
 				<th scope="row">
+					버전
+				</th>
+				<td colspan="3">
+					<?php @include_once(NA_PLUGIN_PATH.'/version.php') ?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
 					통합 최고관리자
 				</th>
 				<td colspan="3">
@@ -94,7 +102,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 		// 게시판 플러그인
 		@include_once(NA_PLUGIN_PATH.'/extend/bbs/admin.php');
 
-		// 멤버쉽 플러그인
+		// 멤버십 플러그인
 		@include_once(NA_PLUGIN_PATH.'/extend/xp/admin.php');
 	?>
 

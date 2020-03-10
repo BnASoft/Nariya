@@ -130,7 +130,8 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 						<?php if($is_skin_setup) { ?>
 							<li><a href="<?php echo na_setup_href('board', $bo_table) ?>" class="btn-setup"><i class="fa fa-cogs" aria-hidden="true"></i> 스킨설정</a>
 						<?php } ?>
-						<?php if ($is_checkbox) { ?>	
+						<?php if ($is_checkbox) { ?>
+							<li><label class="checkbox-inline"><input type="checkbox" onclick="if (this.checked) all_checked(true); else all_checked(false);">전체선택</label></li>
 							<li><button type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value"><i class="fa fa-trash-o" aria-hidden="true"></i> 선택삭제</button></li>
 							<li><button type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value"><i class="fa fa-files-o" aria-hidden="true"></i> 선택복사</button></li>
 							<li><button type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value"><i class="fa fa-arrows" aria-hidden="true"></i> 선택이동</button></li>
@@ -162,7 +163,7 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 				<?php if($prev_part_href) { ?>
 					<li><a href="<?php echo $prev_part_href;?>">이전검색</a></li>
 				<?php } ?>
-				<?php echo na_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, './board.php?bo_table='.$bo_table.$qstr.'&amp;page=');?>
+				<?php echo na_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, get_pretty_url($bo_table, '', $qstr.'&amp;page='));?>
 				<?php if($next_part_href) { ?>
 					<li><a href="<?php echo $next_part_href;?>">다음검색</a></li>
 				<?php } ?>
@@ -189,19 +190,6 @@ function all_checked(sw) {
 			f.elements[i].checked = sw;
 	}
 }
-$(function(){
-	$(".btn-chkall").click(function(){
-		var clicked_checked = $(this);
-
-		if(clicked_checked.hasClass('active')) {
-			all_checked(false);
-			clicked_checked.removeClass('active');
-		} else {
-			all_checked(true);
-			clicked_checked.addClass('active');
-		}
-	});
-});
 function fboardlist_submit(f) {
 	var chk_count = 0;
 

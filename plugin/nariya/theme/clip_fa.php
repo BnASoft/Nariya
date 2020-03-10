@@ -19,7 +19,8 @@ include_once(G5_THEME_PATH.'/head.sub.php');
 body { margin:0; padding:0; background:#fff; }
 a { color:#333; margin:5px; padding:5px 0; text-align:center; width:40px; line-height:24px; display:inline-block; text-decoration:none;}
 a:hover { color:#fff; text-decoration:none; background:rgb(50, 60, 70); border-radius:3px; }
-.clip-head { position:fixed; z-index:1; left:0; top:0; width:100%; padding:10px; font-size:16px; }
+.clip-head { position:fixed; z-index:10; left:0; top:0; width:100%; padding:10px 15px; font-size:16px; }
+.clip-head .close { font-size:28px !important; }
 .font-16 { font-size:16px; }
 .font-14 { font-size:14px; }
 .list-group-item { border-left:0 !important; border-right:0 !important; }
@@ -50,7 +51,7 @@ a:hover { color:#fff; text-decoration:none; background:rgb(50, 60, 70); border-r
 <?php } ?>
 
 <div class="clip-head bg-na-navy en">
-	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span></button>
+	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<b>
 		<i class="fa fa-font-awesome" aria-hidden="true"></i>
 		FONTAWESOME

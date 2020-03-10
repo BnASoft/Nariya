@@ -8,7 +8,7 @@ if ($is_admin != 'super')
 
 $skin = na_fid($skin);
 
-$skin_arr = array('board', 'connect', 'faq', 'member', 'new', 'search', 'qa', 'tag');
+$skin_arr = array('board', 'connect', 'faq', 'member', 'new', 'search', 'qa', 'tag', 'shingo');
 if($skin && in_array($skin, $skin_arr)) { 
 	; //통과
 	if($skin == 'board' && !$board['bo_table']) {
@@ -56,6 +56,10 @@ if($both) {
 	na_file_var_save($mo_file, $vars, 1); //폴더 퍼미션 체크
 } else {
 	na_file_var_save($pc_file, $vars, 1); //폴더 퍼미션 체크
+}
+
+if($skin == 'board') {
+	@include_once($board_skin_path.'/setup.update.skin.php');
 }
 
 goto_url($goto_url);

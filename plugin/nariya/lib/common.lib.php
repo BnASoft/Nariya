@@ -255,7 +255,7 @@ function na_file_var_load($file) {
 	if($file && file_exists($file))
 		@include($file);
 
-	return $data;
+	return array_map_deep('stripslashes', $data);
 }
 
 // 파일에 변수 저장하기
@@ -270,80 +270,6 @@ function na_file_var_save($file, $data, $opt='') {
 	$content = "<?php\nif (!defined('_GNUBOARD_')) exit;\n\$data=".var_export($data, true).";\n?>";
 	fwrite($handle, $content);
 	fclose($handle);
-}
-
-// 불당님의 db_cache 함수 그대로 차용 - 파일캐쉬를 DB로 대신하는 것, $c_code = "latest(simple, gnu4_pack)"
-function na_cache($c_name, $seconds=300, $c_code) {
-    global $g5, $config;
-
-	$c_name = $g5['ms_id'].'|'.$config['cf_theme'].'|pg|'.$c_name;
-    $result = sql_fetch(" select c_name, c_text, c_datetime from {$g5['na_cache']} where c_name = '$c_name'", false);
-
-	if(!$result) {
-		// 캐시 테이블 생성
-		if(is_null($result)) {
-			@include_once (NA_PLUGIN_PATH.'/extend/cache.php');
-		}
-
-		// 시간을 offset 해서 입력 (-1을 해줘야 처음 call에 캐쉬를 만듭니다)
-        $new_time = date("Y-m-d H:i:s", G5_SERVER_TIME - $seconds - 1);
-        $result['c_datetime'] = $new_time;
-        sql_query(" insert into {$g5['na_cache']} set c_name = '$c_name', c_datetime = '$new_time' ", false);
-    }
-
-    $sec_diff = G5_SERVER_TIME - strtotime($result['c_datetime']);
-    if($sec_diff > $seconds) {
-
-        // $c_code () 안에 내용만 살림 
-        $pattern = "/[()]/";
-        $tmp_c_code = preg_split($pattern, $c_code);
-        
-        // 수행할 함수의 이름
-        $func_name = $tmp_c_code[0];
-
-        // 수행할 함수의 인자
-		$tmp_array = explode(",", $tmp_c_code[1]);
-        
-        if ($func_name == "include_once" || $func_name == "include") {
-
-            ob_start();
-            @include($tmp_array[0]);
-            $c_text = ob_get_contents();
-            ob_end_clean();
-
-        } else {
-        
-			// 수행할 함수의 인자를 담아둘 변수
-			$func_args = array();
-
-			for($i=0;$i < count($tmp_array); $i++) {
-				// 기본 trim은 여백 등을 없앤다. $charlist = " \t\n\r\0\x0B"
-				$tmp_args = trim($tmp_array[$i]);
-				// 추가 trim으로 인자를 넘길 때 쓰는 '를 없앤다
-				$tmp_args = trim($tmp_args, "'");
-				// 추가 trim으로 인자를 넘길 때 쓰는 "를 없앤다
-				$func_args[$i] = trim($tmp_args, '"');
-			}
-			// 새로운 캐쉬값을 만들고
-			$c_text = call_user_func_array($func_name, $func_args);
-        }
-
-        // 값이 없으면 그냥 return
-        if (trim($c_text) == "")
-            return;
-
-        // 새로운 캐쉬값을 업데이트 하고
-        sql_query(" update {$g5['na_cache']} set c_text = '".addslashes($c_text)."', c_datetime='".G5_TIME_YMDHIS."' where c_name = '$c_name' ", false);
-
-        // 새로운 캐쉬값을 return (slashes가 없는거를 return 해야합니다)
-        return $c_text;
-
-    } else {
-
-        // 캐쉬한 데이터를 그대로 return
-        return $result['c_text'];
-
-    }
 }
 
 // Skin Path
@@ -401,12 +327,12 @@ function na_admin($val='', $opt='') {
 
 	// 게시판 관리자
 	if($opt) {
-		if($val && in_array($member['mb_id'], explode(",", $val)))
+		if($val && in_array($member['mb_id'], array_map('trim', explode(",", $val))))
 			$is_admin = 'board';
 	} else {
-		if($nariya['cf_admin'] && in_array($member['mb_id'], explode(",", $nariya['cf_admin']))) {
+		if($nariya['cf_admin'] && in_array($member['mb_id'], array_map('trim', explode(",", $nariya['cf_admin'])))) {
 			$is_admin = 'super'; // 통합 최고관리자
-		} else if($nariya['cf_group'] && in_array($member['mb_id'], explode(",", $nariya['cf_group']))) {
+		} else if($nariya['cf_group'] && in_array($member['mb_id'], array_map('trim', explode(",", $nariya['cf_group'])))) {
 			$is_admin = 'group'; // 통합 그룹관리자
 		}
 	}

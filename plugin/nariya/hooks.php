@@ -178,6 +178,9 @@ class G5_NARIYA {
 			$wr['as_thumb'] = '';
 			$seo_img = na_wr_img($bo_table, $wr);
 
+			// 상대경로로 변경
+			$seo_img = str_replace(G5_URL, "./", $seo_img);
+
 			// 업데이트
 			sql_query(" update {$write_table} set as_thumb = '".addslashes($seo_img)."'".$set_sql." where wr_id = '{$wr_id}' ");
 

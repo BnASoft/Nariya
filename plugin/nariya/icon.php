@@ -1,7 +1,7 @@
 <?php
-if (!defined('_GNUBOARD_')) exit; // °³º° ÆäÀÌÁö Á¢±Ù ºÒ°¡
+if (!defined('_GNUBOARD_')) exit; // ê°œë³„ í˜ì´ì§€ ì ‘ê·¼ ë¶ˆê°€
 
-// Font Awesome 4.7.0
+// í°íŠ¸ì–´ì¸(Font Awesome) 4.7.0
 $fas = array(
 	'web' => array(
 		'address-book',

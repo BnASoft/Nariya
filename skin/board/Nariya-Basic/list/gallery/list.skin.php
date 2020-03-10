@@ -169,7 +169,7 @@ if($board['bo_notice']) {
 				&nbsp;<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d') ?>
 			</span>
 
-			<?php echo $list[$i]['name'] ?>
+			<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
 
 			<div class="clearfix"></div>
 		</li>

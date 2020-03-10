@@ -4,8 +4,10 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 $g5_debug['php']['begin_time'] = $begin_time = get_microtime();
 
-if(isset($g5['board_title']) && $g5['board_title'])
-	@include_once($board_skin_path.'/board.head.skin.php');
+//------------------------------------------------------------------------------------
+// 필수 : 게시판 플러그인
+if(IS_NA_BBS && isset($g5['board_title']) && $g5['board_title'])
+	@include_once($board_skin_path.'/_extend.php');
 //------------------------------------------------------------------------------------
 
 // 배열 선언
@@ -26,7 +28,7 @@ $tset = na_theme('bbs', $page_id);
 // 홈경로
 define('NT_HOME_URL', G5_URL);
 
-// 기본컬러
+// 필수 : 기본컬러
 define('NT_COLOR', 'navy');
 
 // 반응형 설정

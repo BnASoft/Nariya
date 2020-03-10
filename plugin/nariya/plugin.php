@@ -80,6 +80,6 @@ include_once(NA_PLUGIN_PATH.'/hooks.php');
 
 // 게시판 개별 후크
 if(isset($board['bo_table']) && $board['bo_table'])
-	@include_once($board_skin_path.'/hooks.php');
+	@include_once($board_skin_path.'/_hooks.php');
 
 ?>

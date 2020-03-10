@@ -31,7 +31,7 @@ $list_cnt = count($list);
 		<span class="wr-nogood"><?php echo subject_sort_link('wr_nogood', $qstr2, 1) ?>비추</a></span>
 	<?php } ?>
 	<?php if ($is_checkbox) { ?>
-		<span class="wr-chk"><input type="checkbox" id="chkall" onclick="if (this.checked) all_checked(true); else all_checked(false);" class="no-margin"></span>
+		<span class="wr-chk"><input type="checkbox" onclick="if (this.checked) all_checked(true); else all_checked(false);" class="no-margin"></span>
 	<?php } ?>
 </div>
 

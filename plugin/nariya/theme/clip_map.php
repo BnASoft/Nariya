@@ -19,7 +19,8 @@ include_once(G5_THEME_PATH.'/head.sub.php');
 <div style="height:45px;"></div>
 <style>
 body { margin:0; padding:0; background:#fff; }
-.clip-head { position:fixed; z-index:1; left:0; top:0; width:100%; padding:10px; font-size:16px; }
+.clip-head { position:fixed; z-index:10; left:0; top:0; width:100%; padding:10px 15px; font-size:16px; }
+.clip-head .close { font-size:28px !important; }
 .table th,
 .table td { vertical-align:middle !important; }
 .na-mapwrap {
@@ -192,7 +193,7 @@ div#crosshair {
 </script>
 
 <div class="clip-head bg-navy en">
-	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span></button>
+	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<b>
 		<i class="fa fa-map-marker" aria-hidden="true"></i>
 		MAP

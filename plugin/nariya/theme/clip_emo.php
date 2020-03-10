@@ -84,7 +84,7 @@ include_once(G5_THEME_PATH.'/head.sub.php');
 
 <form name="fclip" method="get" class="no-margin">
 <div class="clip-head bg-na-navy en">
-	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span></button>
+	<button type="button" class="close white clip-close"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<b>
 		<i class="fa fa-smile-o" aria-hidden="true"></i>
 		EMOTICON

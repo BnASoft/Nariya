@@ -1187,7 +1187,7 @@ function na_bo_list($gr_list, $gr_except, $bo_list, $bo_except) {
 		}
 
 		if($bo_list) {
-			$bo = explode(",", $bo_list);
+			$bo = array_map('trim', explode(",", $bo_list));
 			if($gr_except) {
 				if($bo_except) {
 					$minus = array_unique($gr, $bo);
@@ -1211,7 +1211,7 @@ function na_bo_list($gr_list, $gr_except, $bo_list, $bo_except) {
 			}
 		}
 	} else if($bo_list) {
-		$bo = explode(",", $bo_list);		
+		$bo = array_map('trim', explode(",", $bo_list));
 		if($bo_except) {
 			$minus = $bo;
 		} else {
@@ -1243,7 +1243,7 @@ function na_board_rows($wset) {
 	$list = array();
 
 	$start_rows = 0;
-	$board_cnt = explode(",", $bo_table);
+	$board_cnt = array_map('trim', explode(",", $bo_table));
 	if(!$bo_table || count($board_cnt) > 1 || $wset['bo_except']) {
 
 		// 정렬

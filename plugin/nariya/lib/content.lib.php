@@ -523,7 +523,8 @@ function na_wr_img($bo_table, $wr) {
 	$all = (isset($wr['imgs_all']) && $wr['imgs_all']) ? true : false;
 
 	if(!$all && $rows == "1" && isset($wr['as_thumb']) && $wr['as_thumb']) {
-		return $wr['as_thumb'];
+		// 상대경로 전환
+		return str_replace("./", G5_URL, $wr['as_thumb']);
 	}
 
 	$img = array();
@@ -618,7 +619,6 @@ function na_wr_img($bo_table, $wr) {
 			$vimgs = (is_array($match[2])) ? $match[2] : array();
 			$vimgs_cnt = count($vimgs);
 			for ($i=0; $i < $vimgs_cnt; $i++) {
-				$video = na_video_info(trim(strip_tags($vimgs[$i])));
 
 				$vimg = na_video_img(na_video_info(trim(strip_tags($vimgs[$i]))));
 
@@ -1690,10 +1690,11 @@ function na_check_tag($tag) {
 		return;
 	
 	$list = array();
-	$arr = explode(',', $tag);
+	$arr = array_map('trim', explode(',', $tag));
 	foreach($arr as $tmp) {
-		$tmp = trim($tmp);
-		if(!$tmp) continue;
+		if(!$tmp) 
+			continue;
+
 		$list[] = $tmp;
 	}
 
@@ -1747,7 +1748,7 @@ function na_add_tag($it_tag, $bo_table, $wr_id='', $mb_id='') {
 	sql_query("delete from {$g5['na_tag']} where cnt <= '0'");
 
 	// 태그등록
-	$tags = explode(',', $it_tag);
+	$tags = array_map('trim', explode(',', $it_tag));
 	foreach($tags as $tag) {
 		$row = sql_fetch("select id from {$g5['na_tag']} where tag = '{$tag}' ");
 		if ($row['id']) {
@@ -1774,8 +1775,8 @@ function na_get_tag($it_tag, $opt='') {
 	if(!$it_tag) 
 		return;
 
-	$tag = array();
-	$tag = explode(",", $it_tag);
+	$tags = array();
+	$tags = array_map('trim', explode(",", $it_tag));
 
 	if($opt) { //해시태그
 		$hash1 = '<span class="hash-tag">#';
@@ -1785,16 +1786,17 @@ function na_get_tag($it_tag, $opt='') {
 		$hash2 = '';
 	}
 
-	$sec = ', ';
-	$list = '';
-    foreach($tag as $val) {
-		$val = trim($val);
-		$list .= '<a href="'.G5_BBS_URL.'/tag.php?q='.urlencode($val).'" rel="tag">'.$hash1.$val.$hash2.'</a>'.$sec;
+	$i = 0;
+	$str = '';
+	foreach($tags as $tag) {
+		if($i > 0)
+			$str .= ', ';
+
+		$str .= '<a href="'.G5_BBS_URL.'/tag.php?q='.urlencode($tag).'" rel="tag">'.$hash1.$tag.$hash2.'</a>';
+		$i++;
 	}
 
-	$list = substr($list, 0, strlen($list)-strlen($sec));
-
-    return $list;
+	return $str;
 }
 
 // Delete

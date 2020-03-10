@@ -81,7 +81,7 @@ include_once(G5_THEME_PATH.'/head.sub.php');
 <input type="hidden" name="both" value="">
 <input type="hidden" name="freset" value="">
 <div class="fsetup-head bg-na-navy en">
-	<button type="button" class="close white close-setup"><span aria-hidden="true" class="white">&times;</span></button>
+	<button type="button" class="close white close-setup"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<i class="fa fa-cog fa-spin"></i>
 	<b><?php echo $g5['title'] ?></b>
 </div>
