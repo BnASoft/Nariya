@@ -50,7 +50,7 @@ body {
 }
 </style>
 <div class="fsetup-head bg-na-navy en">
-	<button type="button" class="close white" onclick="closeClip();"><span aria-hidden="true" class="white">&times;</span></button>
+	<button type="button" class="close white" onclick="closeClip();"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<b>
 		<i class="fa fa-cog fa-spin" aria-hidden="true"></i>
 		$page_id = <?php echo $pid ?>

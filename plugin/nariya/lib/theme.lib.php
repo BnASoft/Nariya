@@ -735,15 +735,11 @@ function na_stats($cache) {
 	// 방문통계는 그대로 출력
     // visit 배열변수에 $visit[1] = 오늘, $visit[2] = 어제, $visit[3] = 최대, $visit[4] = 전체 숫자가 들어감
     preg_match("/오늘:(.*),어제:(.*),최대:(.*),전체:(.*)/", $config['cf_visit'], $visit);
-    settype($visit[0], "integer");
-    settype($visit[1], "integer");
-    settype($visit[2], "integer");
-    settype($visit[3], "integer");
 
-	$data['visit_today'] = $visit[1];
-	$data['visit_yesterday'] = $visit[2];
-	$data['visit_max'] = $visit[3];
-	$data['visit_total'] = $visit[4];
+	$data['visit_today'] = (int)$visit[1];
+	$data['visit_yesterday'] = (int)$visit[2];
+	$data['visit_max'] = (int)$visit[3];
+	$data['visit_total'] = (int)$visit[4];
 
     return $data;
 }

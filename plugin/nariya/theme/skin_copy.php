@@ -12,7 +12,7 @@ if(!$board['bo_table'])
 // 클립모달
 $is_clip_modal = false;
 
-$g5['title'] = $board['bo_subject'].' 스킨설정 복사';
+$g5['title'] = $board['bo_subject'].' 게시판 스킨설정 복사해 주기';
 include_once(G5_THEME_PATH.'/head.sub.php');
 
 ?>
@@ -21,10 +21,6 @@ include_once(G5_THEME_PATH.'/head.sub.php');
 
 <style>
 body { padding:0 0 30px; }
-#fsetup .alert { 
-	padding:8px 15px 10px;
-	text-align:right;
-}
 #fsetup .list-group-item p { 
 	width:33.333%; 
 	padding:2px;
@@ -33,16 +29,18 @@ body { padding:0 0 30px; }
 <form id="fsetup" name="fsetup" class="form-horizontal na-fadein f-small" action="./skin_copy_update.php" method="post" onsubmit="return fsetup_submit(this);">
 <input type="hidden" name="bo_table" value="<?php echo urlencode($bo_table) ?>">
 
-<?php if(isset($nariya['mobile_skin']) && $nariya['mobile_skin']) { ?>
-	<div class="alert alert-info" role="alert">
-		<label class="checkbox-inline f-small">
-			<b><input type="checkbox" name="both" value="1"> PC와 모바일 설정파일 모두 복사</b>
-		</label>
-	</div>
-<?php } else { ?>
-	<input type="hidden" name="both" value="1">
-<?php } ?>
 <ul class="list-group">
+<li class="list-group-item bg-light f-small">
+	※ 설정값을 복사해 줄 게시판을 한개 이상 선택해 주십시오.
+	<?php if(isset($nariya['mobile_skin']) && $nariya['mobile_skin']) { ?>
+		<br>
+		<label class="checkbox-inline">
+			<b><input type="checkbox" name="both" value="1"> PC/모바일 설정값 모두 복사해 주기</b>
+		</label>
+	<?php } else { ?>
+		<input type="hidden" name="both" value="1">
+	<?php } ?>
+</li>
 <?php
 	$n = 0;
 	$result = sql_query(" select gr_id, gr_subject from {$g5['group_table']} order by gr_id ");
@@ -75,7 +73,7 @@ body { padding:0 0 30px; }
 			<button type="button" class="btn btn-dark" onclick="window.close();">창닫기</button>
 		</div>
 		<div class="btn-group" role="group">
-			<button type="submit" id="btn_submit" class="btn btn-na-red">복사하기</button>
+			<button type="submit" id="btn_submit" class="btn btn-na-red">복사해 주기</button>
 		</div>
 	</div>
 </div>
@@ -111,11 +109,11 @@ function fsetup_submit(f) {
     }
 
     if (!check) {
-        alert('게시물을 '+f.act.value+'할 게시판을 한개 이상 선택해 주십시오.');
+        alert('설정값을 복사해 줄 게시판을 한개 이상 선택해 주십시오.');
         return false;
     }
 
-	if (confirm("정말 복사 하시겠습니까?\n\n복사시 이전 설정값으로 복구할 수 없습니다.")) {
+	if (confirm("정말 스킨설정을 복사해 주시겠습니까?\n\n복사해 줄 경우 각 게시판은 이전 설정값으로 복구할 수 없습니다.")) {
 	    document.getElementById('btn_submit').disabled = true;
 		return true;
 	} else {

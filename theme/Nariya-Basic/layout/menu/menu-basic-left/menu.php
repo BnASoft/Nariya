@@ -98,7 +98,7 @@ $is_col_all = 6;
 									for($j=0; $j < count($me['s']); $j++) { 
 											$me1 = $me['s'][$j]; 
 									?>
-										<?php if($me['sp']) { //나눔 ?>
+										<?php if($me1['sp']) { //나눔 ?>
 											</ul>
 											<ul class="sub-dul me-sw pull-left">
 										<?php $me_sw1++; } // 나눔 카운트 ?>

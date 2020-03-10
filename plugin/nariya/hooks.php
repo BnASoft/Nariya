@@ -30,7 +30,7 @@ class G5_NARIYA {
 	public function add_hooks() {
 
 		// 공통
-		add_event('common_header', array($this, 'common_header'), 10, 5);
+		add_event('common_header', array($this, 'common_header'), 10, 0);
 
 		// 글등록
 		add_event('write_update_after', array($this, 'write_insert'), 10, 5);

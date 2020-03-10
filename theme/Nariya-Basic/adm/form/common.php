@@ -34,10 +34,10 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</th>
 						<td>
 							<ol>
-								<li>스킨은 PC 스킨(1:1문의 제외)만 설정해 주면 됩니다.</li>
+								<li>스킨은 PC 스킨(1:1문의, 내용관리 제외)만 설정해 주면 됩니다.</li>
 								<li>환경설정 > 기본환경설정에서 최근게시물, 검색, 접속자, FAQ, 회원스킨을 Nariya-Basic 으로 변경해 주세요.</li>
 								<li>게시판관리 > 게시판관리에서 각 게시판 스킨을 Nariya-Basic 으로 변경해 주세요.</li>
-								<li>게시판관리 > 내용관리에서 각 문서의 스킨을 Nariya-Basic 으로 변경해 주세요.</li>
+								<li>게시판관리 > 내용관리에서 각 문서의 PC/모바일 스킨을 Nariya-Basic 으로 변경해 주세요.</li>
 								<li>게시판관리 > 1:1문의설정에서 PC/모바일 스킨을 Nariya-Basic 으로 변경해 주세요.</li>
 							</ol>
 						</td>
@@ -48,7 +48,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</th>
 						<td>
 							<ol>
-								<li>등록 또는 신규 생성한 내용관리 문서의 스킨을 Nariya-Basic 으로 적용해 주세요.</li>
+								<li>등록 또는 신규 생성한 내용관리 문서의 PC/모바일 스킨을 Nariya-Basic 으로 적용해 주세요.</li>
 								<li>게시판관리 > 내용관리에서 다음의 아이디(co_id)로 문서를 등록해 주세요.
 									<table class="table table-bordered" style="margin:10px 0;">
 									<tbody>
