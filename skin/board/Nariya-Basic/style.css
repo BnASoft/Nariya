@@ -388,15 +388,15 @@
 .cmt-box .help-block {
 	margin-top:0;
 }
-#bo_vc_w .tr { 
+#fviewcomment .tr { 
 	border:0;
 }
-#bo_vc_w .td { 
+#fviewcomment .td { 
 	text-align:center; 
 	vertical-align:middle; 
 	padding:0;
 }
-#bo_vc_w .td.cmt-submit { 
+#fviewcomment .td.cmt-submit { 
 	width:80px; 
 	height:100%; 
 	background:#fafafa; 
@@ -418,7 +418,7 @@
 	text-align:center;
 	padding:15px 0 0;
 }
-#bo_vc_w #wr_content { 
+#fviewcomment #wr_content { 
 	resize:none; 
 	border-radius:0; 
 }
