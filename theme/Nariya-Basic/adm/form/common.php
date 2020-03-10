@@ -102,7 +102,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			<label class="col-sm-2 control-label">주의사항</label>
 			<div class="col-sm-10">
 				<p class="form-control-static">
-					<b>테마 기본설정과 다른 것만 설정해 주세요!</b> 같은데 설정하면 기본설정 변경시 같이 다 변경해야 합니다.
+					<b>사이트 기본설정과 다른 것만 설정해 주세요!</b> 같은데 설정하면 기본설정 변경시 페이지 설정도 다 변경해야 합니다.
 				</p>
 			</div>
 		</div>
@@ -365,7 +365,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</select>
 					</td>
 					<td class="text-muted">
-						테마 내 /index 폴더 내 파일
+						/index 폴더 내 php 파일
 					</td>
 					</tr>
 
@@ -419,13 +419,13 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</select>
 					</td>
 					<td class="text-muted">
-						테마 내 /layout/title 폴더
+						/layout/title 폴더
 					</td>
 					</tr>
 
 					<tr>
 					<th class="text-center">
-						이미지
+						타이틀 이미지
 					</th>
 					<td>
 						<div class="input-group">
@@ -444,7 +444,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</div>
 					</td>
 					<td class="text-muted">
-						배경 등 스킨에 따라 다양하게 사용
+						타이틀 배경 등 다양하게 사용
 					</td>
 					</tr>
 
@@ -502,7 +502,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</select>
 					</td>
 					<td class="text-muted">
-						테마 내 /layout/side 폴더
+						/layout/side 폴더
 					</td>
 					</tr>
 

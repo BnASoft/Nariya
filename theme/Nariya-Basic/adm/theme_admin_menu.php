@@ -46,7 +46,7 @@ include_once (NA_PLUGIN_PATH.'/theme/setup.php');
 	
 	<ul class="list-group">
 		<li class="list-group-item bg-na-navy">
-			<b>커뮤니티 설정 메뉴</b>
+			<b>테마 설정 메뉴</b>
 		</li>
 		<li class="list-group-item">
 			<a href="<?php echo NA_THEME_ADMIN_URL;?>/site_setup.php">

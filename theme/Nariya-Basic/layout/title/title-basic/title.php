@@ -2,14 +2,6 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 add_stylesheet('<link rel="stylesheet" href="'.$nt_title_url.'/title.css">', 0);
-
-// 페이지 설명글 없으면 현재 위치 출력
-if($tset['page_desc']) {
-	$page_desc = $tset['page_desc'];
-} else {
-	$page_desc = (empty($tnav['nav'])) ?  $page_title : '<i class="fa fa-home"></i> > '.implode(' > ', $tnav['nav']);
-}
-
 ?>
 
 <!-- Page Title -->
@@ -22,7 +14,14 @@ if($tset['page_desc']) {
 		<strong><?php echo $page_title;?></strong>
 		</div>
 		<div class="page-desc hidden-xs">
-			<?php echo $page_desc;?>
+		<?php
+			// 페이지 설명글 없으면 현재 위치 출력
+			if($tset['page_desc']) {
+				echo $tset['page_desc'];
+			} else {
+				echo (empty($tnav['nav'])) ?  $page_title : '<i class="fa fa-home"></i> > '.implode(' > ', $tnav['nav']);
+			}
+		?>
 		</div>
 		<div class="clearfix"></div>
 	</div>

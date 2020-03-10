@@ -37,6 +37,9 @@ $g5['title'] = '레이아웃 데모';
 
 // Page Loader 때문에 먼저 실행함
 include_once(G5_THEME_PATH.'/head.sub.php');
+
+$is_wing = false;
+
 include_once(G5_THEME_PATH.'/demo/_loader.php');
 include_once('../head.php');
 

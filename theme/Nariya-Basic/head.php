@@ -79,9 +79,8 @@ list($nt_top_url, $nt_top_path) = na_layout_content('top', $tset['top']);
 list($nt_lnb_url, $nt_lnb_path) = na_layout_content('lnb', $tset['lnb'], 'lnb-basic');
 list($nt_header_url, $nt_header_path) = na_layout_content('header', $tset['header'], 'header-basic');
 list($nt_menu_url, $nt_menu_path) = na_layout_content('menu', $tset['menu'], 'menu-basic');
-list($nt_wing_url, $nt_wing_path) = na_layout_content('wing', $tset['wing']);
+list($nt_wing_url, $nt_wing_path) = na_layout_content('wing', $tset['wing'], 'wing-basic');
 list($nt_footer_url, $nt_footer_path) = na_layout_content('footer', $tset['footer'], 'footer-basic');
-list($nt_bottom_url, $nt_bottom_path) = na_layout_content('bottom', $tset['bottom'], 'bottom-basic');
 list($nt_sidebar_url, $nt_sidebar_path) = na_layout_content('sidebar', $tset['sidebar'], 'sidebar-basic');
 
 // 필수 : 메뉴 및 현재위치 정보 불러오기 - 전역변수로 사용됨
@@ -106,14 +105,12 @@ if($nt_top_path)
 	@include_once ($nt_top_path.'/top.php');
 ?>
 <div class="wrapper <?php echo $tset['layout'] ?>">
+	<div id="nt_header">
 	<?php
 	// LNB
 	if($nt_lnb_path)
 		@include_once ($nt_lnb_path.'/lnb.php');
-	?>
-	
-	<div id="nt_header">
-	<?php
+
 	// HEADER
 	if($nt_header_path)
 		@include_once ($nt_header_path.'/header.php');
@@ -128,12 +125,14 @@ if($nt_top_path)
 	?>
 	</div><!-- #nt_header -->
 
-	<div id="nt_body" class="nt-body">
 	<?php
 	// WING
-	if($nt_wing_path)
+	if($is_wing && $nt_wing_path)
 		@include_once ($nt_wing_path.'/wing.php');
 	?>
+
+	<div id="nt_body" class="nt-body">
+
 	<?php if($is_page_col) { ?>
 		<div class="nt-container">
 		<?php if($is_page_col == "two") { ?>

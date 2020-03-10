@@ -270,3 +270,11 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 </aside>
 
 <div id="nt_sidebar_mask" class="sidebar-close"></div>
+
+<!-- 상단이동 버튼 -->
+<div id="nt_bottom">
+	<div id="nt_top" class="go-btn">
+		<span class="go-top cursor"><i class="fa fa-chevron-up"></i></span>
+		<span class="go-bottom cursor"><i class="fa fa-chevron-down"></i></span>
+	</div>
+</div>

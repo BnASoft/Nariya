@@ -21,6 +21,8 @@ if(!$tset['index'])
 	$tset['index'] = 'basic';
 
 $is_index = true;
+$is_wing = false;
+
 ?>
 <script>
 // Page Loader

@@ -13,6 +13,68 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 	<li class="list-group-item">
 		<div class="form-group">
+			<label class="col-sm-2 control-label">컨텐츠 설정</label>
+			<div class="col-sm-10">
+
+				<div class="table-responsive">
+					<table class="table table-bordered no-margin">
+					<tbody>
+					<tr class="active">
+					<th class="text-center col-xs-2">구분</th>
+					<th class="text-center col-xs-3">PC 설정</th>
+					<th class="text-center col-xs-3">모바일 설정</th>
+					<th class="text-center">비고</th>
+					</tr>
+
+					<?php
+					// 컨텐츠는 한 번에 처리...ㅠㅠ
+					$area = array('top', 'lnb', 'header', 'menu', 'wing', 'footer', 'sidebar');
+					$area_txt = array('상단 배너', '상단 네비', 'PC 헤더', '모바일 헤더, PC 메뉴', '좌우 배너', '하단 네비', '모바일 메뉴');
+					for($z=0;$z<count($area);$z++) {
+						$n = $area[$z];
+					?>
+						<tr>
+						<th class="text-center">
+							<?php echo strtoupper($n) ?>
+						</th>
+						<td>
+							<select name="pc[<?php echo $n ?>]" class="form-control">
+								<option value="">선택해 주세요</option>
+								<?php 
+								unset($skins);
+								$skins = na_dir_list(G5_THEME_PATH.'/layout/'.$n);
+								for ($i=0; $i<count($skins); $i++) { 
+								?>
+									<option value="<?php echo $skins[$i] ?>"<?php echo get_selected($pc[$n], $skins[$i]) ?>><?php echo $skins[$i] ?></option>
+								<?php } ?>
+							</select>
+						</td>
+						<td>
+							<select name="mo[<?php echo $n ?>]" class="form-control">
+								<option value="">선택해 주세요</option>
+								<?php for ($i=0; $i<count($skins); $i++) { // $skins PC랑 같은 배열임 ?>
+									<option value="<?php echo $skins[$i] ?>"<?php echo get_selected($mo[$n], $skins[$i]) ?>><?php echo $skins[$i] ?></option>
+								<?php } ?>
+							</select>
+						</td>
+						<td class="text-muted">
+							/layout/<?php echo $n ?> 폴더
+							→
+							<?php echo $area_txt[$z] ?>
+						</td>
+						</tr>
+					<?php } ?>
+
+					</tbody>
+					</table>
+				</div>				
+
+			</div>
+		</div>
+	</li>
+
+	<li class="list-group-item">
+		<div class="form-group">
 			<label class="col-sm-2 control-label">레이아웃 설정</label>
 			<div class="col-sm-10">
 
@@ -244,65 +306,6 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 				<p class="help-block">
 					배경은 박스형 레이아웃 스타일에서만 적용됩니다.
 				</p>
-			</div>
-		</div>
-	</li>
-
-	<li class="list-group-item">
-		<div class="form-group">
-			<label class="col-sm-2 control-label">컨텐츠 설정</label>
-			<div class="col-sm-10">
-
-				<div class="table-responsive">
-					<table class="table table-bordered no-margin">
-					<tbody>
-					<tr class="active">
-					<th class="text-center col-xs-2">구분</th>
-					<th class="text-center col-xs-3">PC 설정</th>
-					<th class="text-center col-xs-3">모바일 설정</th>
-					<th class="text-center">비고</th>
-					</tr>
-
-					<?php
-					// 컨텐츠는 한 번에 처리...ㅠㅠ
-					$area = array('top', 'lnb', 'header', 'menu', 'footer', 'bottom', 'sidebar', 'wing');
-					for($z=0;$z<count($area);$z++) {
-						$n = $area[$z];
-					?>
-						<tr>
-						<th class="text-center">
-							<?php echo strtoupper($n) ?> 영역
-						</th>
-						<td>
-							<select name="pc[<?php echo $n ?>]" class="form-control">
-								<option value="">선택해 주세요</option>
-								<?php 
-								unset($skins);
-								$skins = na_dir_list(G5_THEME_PATH.'/layout/'.$n);
-								for ($i=0; $i<count($skins); $i++) { 
-								?>
-									<option value="<?php echo $skins[$i] ?>"<?php echo get_selected($pc[$n], $skins[$i]) ?>><?php echo $skins[$i] ?></option>
-								<?php } ?>
-							</select>
-						</td>
-						<td>
-							<select name="mo[<?php echo $n ?>]" class="form-control">
-								<option value="">선택해 주세요</option>
-								<?php for ($i=0; $i<count($skins); $i++) { // $skins PC랑 같은 배열임 ?>
-									<option value="<?php echo $skins[$i] ?>"<?php echo get_selected($mo[$n], $skins[$i]) ?>><?php echo $skins[$i] ?></option>
-								<?php } ?>
-							</select>
-						</td>
-						<td class="text-muted">
-							테마 내 /layout/<?php echo $n ?> 폴더
-						</td>
-						</tr>
-					<?php } ?>
-
-					</tbody>
-					</table>
-				</div>				
-
 			</div>
 		</div>
 	</li>

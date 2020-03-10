@@ -41,7 +41,4 @@ $theme_config = array(
 // 필수 : 나리야 플러그인 로드
 @include_once(G5_PLUGIN_PATH.'/nariya/plugin.php');
 
-// 나리야 테마
-define('NA_THEME', 'bs3');
-
 ?>

@@ -55,7 +55,7 @@
 #nt_menu { 
 	position:relative; 
 	background: rgb(50, 60, 70);
-	z-index:3;
+	z-index:10;
 	box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
 	-webkit-box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
 	-moz-box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
@@ -211,7 +211,7 @@
 
 /* 주메뉴 메뉴간격 : 페딩값으로 조절 */
 #nt_menu .me-list .me-a { 
-	padding:0 15px;
+	padding:0 20px;
 }
 /* 서브메뉴 높이설정 : 페딩값으로 조절 */
 #nt_menu .me-sh { 

@@ -34,10 +34,6 @@ if($tset['page_sub']) {
 	?>
 </div><!-- .wrapper -->
 <?php
-// BOTTOM
-if($nt_bottom_path)
-	@include_once ($nt_bottom_path.'/bottom.php');
-
 // SIDEBAR
 if($nt_sidebar_path)
 	@include_once ($nt_sidebar_path.'/sidebar.php');
@@ -50,7 +46,7 @@ if ($config['cf_analytics']) {
 <?php if(!G5_IS_MOBILE) { // PC에서만 실행 ?>
 <script>
 function nt_body_size() {
-	var $nt_body = $(window).height() - $('#nt_lnb').height() - $('#nt_header').height() - $('#nt_footer').height();
+	var $nt_body = $(window).height() - $('#nt_header').height() - $('#nt_footer').height();
 	$('#nt_body').css('min-height', $nt_body);
 }
 $(document).ready(function() {
